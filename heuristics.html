@@ -36,57 +36,98 @@
     </header>
 
     <section class="hero reveal">
-      <div class="glass-title">启发式与偏差</div>
+      <div class="glass-title">启发式与偏差：直觉的捷径</div>
       <p>
-        本页为「启发式与偏差」的阅读骨架：章节要点、结构图表与前后导航均已就位，
-        具体内容可在编辑时补充。
+        为了快速决策，系统 1 使用一系列心理捷径（启发式），它们大多可靠，但在特定条件下会产生
+        <strong>系统性偏差</strong>。了解这些偏差，是抵御直觉误导的第一步。
       </p>
       <div class="badges">
-        <span class="badge">章节骨架</span>
-        <span class="badge">待填充</span>
-        <span class="badge">Thinking, Fast and Slow</span>
+        <span class="badge">代表性启发式</span>
+        <span class="badge">可得性启发式</span>
+        <span class="badge">锚定效应</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>章节要点</h2>
-        <span class="section-meta">占位内容，可编辑</span>
+        <h2>三种核心启发式</h2>
+        <span class="section-meta">系统 1 常用的捷径</span>
       </div>
       <div class="grid-2">
         <div class="card reveal">
-          <h3>要点一</h3>
-          <p>在此填写本章的第一个核心观点或关键事件。</p>
+          <h3>代表性启发式</h3>
+          <p>用「看起来像不像」判断概率。典型偏差：忽略基础比率，以为描述符合典型就代表更可能发生。</p>
         </div>
         <div class="card reveal">
-          <h3>要点二</h3>
-          <p>在此填写本章的第二个核心观点或关键事件。</p>
+          <h3>可得性启发式</h3>
+          <p>用「想起来有多容易」判断频率。亲历或新闻里常见的事件被高估，罕见却惊人的事件被放大。</p>
         </div>
         <div class="card reveal">
-          <h3>要点三</h3>
-          <p>在此填写本章的第三个核心观点或关键事件。</p>
+          <h3>锚定效应</h3>
+          <p>先出现的数字会成为参照系，后续判断被它牵住。即便是无关的随机数字也能影响估算。</p>
         </div>
         <div class="card reveal">
-          <h3>本章小结</h3>
-          <p>在此总结本章的阅读收获与前后关联。</p>
+          <h3>框架效应</h3>
+          <p>同一个事实用「获益」或「损失」表述，会导向不同的选择。表述方式本身在影响我们。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>概念速览</h2>
-        <span class="section-meta">图表占位，可替换为自定义图表</span>
+        <h2>偏差如何被放大</h2>
+        <span class="section-meta">系统 1 的自信与误判</span>
       </div>
-      <div class="card chart-animate reveal">
-        <div class="chart-title"><span>章节结构示意</span></div>
-        <div class="matrix">
-          <div class="pill">引入</div>
-          <div class="pill">展开</div>
-          <div class="pill">对比</div>
-          <div class="pill">总结</div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title"><span>系统1介入强度 vs 出错风险</span></div>
+          <div class="bar-grid">
+            <div>
+              <div class="bar-value">85</div>
+              <div class="bar-vertical"><span data-tip="自动快速 · 85" style="height: 85%; background: #3ecf9d;"></span></div>
+              <div class="bar-caption">自动快速</div>
+            </div>
+            <div>
+              <div class="bar-value">78</div>
+              <div class="bar-vertical"><span data-tip="直觉自信 · 78" style="height: 78%; background: #8fe8c4;"></span></div>
+              <div class="bar-caption">直觉自信</div>
+            </div>
+            <div>
+              <div class="bar-value">72</div>
+              <div class="bar-vertical"><span data-tip="忽略比率 · 72" style="height: 72%; background: #2aa07c;"></span></div>
+              <div class="bar-caption">忽略比率</div>
+            </div>
+            <div>
+              <div class="bar-value">90</div>
+              <div class="bar-vertical"><span data-tip="系统性偏差 · 90" style="height: 90%; background: #6f84a8;"></span></div>
+              <div class="bar-caption">系统性偏差</div>
+            </div>
+          </div>
+          <p class="note">示意：启发式越自动，越容易在特定情境下偏离事实。</p>
         </div>
-        <p class="note">可参考 revolutions.html 等示例页替换为 SVG 图表。</p>
+        <div class="card reveal">
+          <h3>代表性经典题</h3>
+          <p>「琳达」：她关心社会正义、曾参加反核游行。问：琳达更可能是「银行出纳」还是「既是银行出纳又是女权主义者」？多数人选后者，但概率上它不可能大于前者——这正是合取谬误。</p>
+          <div class="matrix">
+            <div class="pill">直觉：合取更"像"琳达</div>
+            <div class="pill">逻辑：交集 ≤ 子集</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>应对策略</h2>
+        <span class="section-meta">让系统 2 有机会纠偏</span>
+      </div>
+      <div class="card reveal">
+        <ol class="heading-list">
+          <li>先问基础比率：这类事件整体上有多常见？</li>
+          <li>质疑锚定值：第一个数字真的有意义，还是随机干扰？</li>
+          <li>换框架重述：用获益视角和损失视角各看一遍，结论是否改变？</li>
+          <li>引入外部反馈：用数据与同行校准，而非只靠自我感觉。</li>
+        </ol>
       </div>
     </section>
 
@@ -107,7 +148,7 @@
       <a href="prospect.html">前景理论 →</a>
     </div>
 
-    <div class="footer">《思考，快与慢》章节页 · 骨架模板。</div>
+    <div class="footer">《思考，快与慢》章节页 · 启发式与偏差导读。</div>
   </main>
   <script src="./books.js"></script>
   <script src="./app.js"></script>

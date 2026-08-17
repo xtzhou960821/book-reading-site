@@ -36,57 +36,101 @@
     </header>
 
     <section class="hero reveal">
-      <div class="glass-title">前景理论</div>
+      <div class="glass-title">前景理论：损失与收益的不对称</div>
       <p>
-        本页为「前景理论」的阅读骨架：章节要点、结构图表与前后导航均已就位，
-        具体内容可在编辑时补充。
+        卡尼曼与特沃斯基提出：人在不确定情境下的决策并非追求期望值最大化，而是围绕
+        <strong>参考点</strong>评估得失——<strong>损失带来的痛苦大于同等收益带来的快乐</strong>，
+        这是行为经济学最重要的发现之一。
       </p>
       <div class="badges">
-        <span class="badge">章节骨架</span>
-        <span class="badge">待填充</span>
-        <span class="badge">Thinking, Fast and Slow</span>
+        <span class="badge">损失厌恶</span>
+        <span class="badge">参考点依赖</span>
+        <span class="badge">边际递减</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>章节要点</h2>
-        <span class="section-meta">占位内容，可编辑</span>
+        <h2>前景理论的三大支柱</h2>
+        <span class="section-meta">与传统期望效用理论的差异</span>
       </div>
       <div class="grid-2">
         <div class="card reveal">
-          <h3>要点一</h3>
-          <p>在此填写本章的第一个核心观点或关键事件。</p>
+          <h3>参考点依赖</h3>
+          <p>价值不是绝对的，而是相对当前参考点（现状、预期）来衡量的。同一收益，起点不同感受天差地别。</p>
         </div>
         <div class="card reveal">
-          <h3>要点二</h3>
-          <p>在此填写本章的第二个核心观点或关键事件。</p>
+          <h3>损失厌恶</h3>
+          <p>损失的心理冲击约为等额收益的 2 倍左右。我们宁可冒险避免损失，也不愿稳妥获取等量收益。</p>
         </div>
         <div class="card reveal">
-          <h3>要点三</h3>
-          <p>在此填写本章的第三个核心观点或关键事件。</p>
+          <h3>敏感性递减</h3>
+          <p>收益与损失都遵循边际递减：从 0 到 100 的差异，比从 900 到 1000 更被看重；离参考点越远，边际感受越弱。</p>
         </div>
         <div class="card reveal">
-          <h3>本章小结</h3>
-          <p>在此总结本章的阅读收获与前后关联。</p>
+          <h3>权重扭曲</h3>
+          <p>小概率被高估（买彩票），大概率被低估（忽视稳健风险），导致概率与心理权重不一致。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>概念速览</h2>
-        <span class="section-meta">图表占位，可替换为自定义图表</span>
+        <h2>损失厌恶的价值函数</h2>
+        <span class="section-meta">不对称曲线示意</span>
       </div>
-      <div class="card chart-animate reveal">
-        <div class="chart-title"><span>章节结构示意</span></div>
-        <div class="matrix">
-          <div class="pill">引入</div>
-          <div class="pill">展开</div>
-          <div class="pill">对比</div>
-          <div class="pill">总结</div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title"><span>价值函数：损失区更陡</span></div>
+          <svg viewBox="0 0 600 240" width="100%" height="220" aria-label="损失厌恶价值函数">
+            <defs>
+              <linearGradient id="gainGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="rgba(62,207,157,0.35)" />
+                <stop offset="100%" stop-color="rgba(62,207,157,0.02)" />
+              </linearGradient>
+              <linearGradient id="lossGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="rgba(255,142,199,0.35)" />
+                <stop offset="100%" stop-color="rgba(255,142,199,0.02)" />
+              </linearGradient>
+            </defs>
+            <!-- 参考点坐标轴 -->
+            <line x1="300" y1="20" x2="300" y2="200" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="4 4" />
+            <line x1="30" y1="110" x2="570" y2="110" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="4 4" />
+            <text x="300" y="12" text-anchor="middle" font-size="11" fill="rgba(245,247,255,0.7)">参考点</text>
+            <!-- 收益区（增益） -->
+            <path d="M300 110 C 380 92, 460 100, 560 130" fill="none" stroke="#3ecf9d" stroke-width="4" />
+            <path d="M300 110 C 380 92, 460 100, 560 130 L560 180 L300 180 Z" fill="url(#gainGrad)" />
+            <text x="460" y="158" text-anchor="middle" font-size="11" fill="#8fe8c4">收益区 · 平缓上升</text>
+            <!-- 损失区（损失更陡） -->
+            <path d="M300 110 C 240 132, 170 150, 60 168" fill="none" stroke="#ff8ec7" stroke-width="4" />
+            <path d="M300 110 C 240 132, 170 150, 60 168 L60 200 L300 200 Z" fill="url(#lossGrad)" />
+            <text x="150" y="196" text-anchor="middle" font-size="11" fill="#ff8ec7">损失区 · 更陡</text>
+          </svg>
+          <p class="note">损失曲线更陡：同样大小的一笔损失，心理感受比收益更强烈。</p>
         </div>
-        <p class="note">可参考 revolutions.html 等示例页替换为 SVG 图表。</p>
+        <div class="card reveal">
+          <h3>一个直觉测试</h3>
+          <p>抛硬币：正面赢 100 元，反面输 100 元。多数人不愿参与——因为输 100 的痛苦大于赢 100 的快乐，需要把赢面抬到约 200 元才愿意入场。</p>
+          <div class="matrix">
+            <div class="pill">输 100 的痛苦 ≈ 赢 200 的快乐</div>
+            <div class="pill">损失厌恶系数 ≈ 2</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>对现实决策的启示</h2>
+        <span class="section-meta">从经济学到日常生活</span>
+      </div>
+      <div class="card reveal">
+        <ol class="heading-list">
+          <li>投资：被套牢时不愿止损（损失厌恶），反而「抄底加仓」放大风险。</li>
+          <li>消费：先给「参考价」再降价，会显著提升成交率（锚定 + 框架）。</li>
+          <li>谈判：把对方拉向自己的参考点，谈判结果随之偏移。</li>
+          <li>政策：默认选项（opt-in / opt-out）能极大改变参与率，正是框架效应的应用。</li>
+        </ol>
       </div>
     </section>
 
@@ -107,7 +151,7 @@
       <a href="memory.html">记忆自我 →</a>
     </div>
 
-    <div class="footer">《思考，快与慢》章节页 · 骨架模板。</div>
+    <div class="footer">《思考，快与慢》章节页 · 前景理论导读。</div>
   </main>
   <script src="./books.js"></script>
   <script src="./app.js"></script>

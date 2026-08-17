@@ -36,57 +36,85 @@
     </header>
 
     <section class="hero reveal">
-      <div class="glass-title">记忆自我</div>
+      <div class="glass-title">记忆自我：峰终定律</div>
       <p>
-        本页为「记忆自我」的阅读骨架：章节要点、结构图表与前后导航均已就位，
-        具体内容可在编辑时补充。
+        卡尼曼区分了「体验自我」与「记忆自我」。我们回忆起一段经历时，往往只记住它的<strong>峰值</strong>与
+        <strong>结尾</strong>，而忽略时长与其余部分——这就是影响幸福判断的<strong>峰终定律</strong>。
       </p>
       <div class="badges">
-        <span class="badge">章节骨架</span>
-        <span class="badge">待填充</span>
-        <span class="badge">Thinking, Fast and Slow</span>
+        <span class="badge">体验自我</span>
+        <span class="badge">记忆自我</span>
+        <span class="badge">峰终定律</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>章节要点</h2>
-        <span class="section-meta">占位内容，可编辑</span>
+        <h2>两个自我</h2>
+        <span class="section-meta">谁在评价你的生活？</span>
       </div>
       <div class="grid-2">
         <div class="card reveal">
-          <h3>要点一</h3>
-          <p>在此填写本章的第一个核心观点或关键事件。</p>
+          <h3>体验自我</h3>
+          <p>在每时每刻实际感受当下——疼痛、快乐、紧张。它关注「此刻的连续体验」，但不做整体总结。</p>
         </div>
         <div class="card reveal">
-          <h3>要点二</h3>
-          <p>在此填写本章的第二个核心观点或关键事件。</p>
-        </div>
-        <div class="card reveal">
-          <h3>要点三</h3>
-          <p>在此填写本章的第三个核心观点或关键事件。</p>
-        </div>
-        <div class="card reveal">
-          <h3>本章小结</h3>
-          <p>在此总结本章的阅读收获与前后关联。</p>
+          <h3>记忆自我</h3>
+          <p>事后回顾并叙述这段经历，用记忆形成整体判断。它决定我们「是否满意」这段经历，却常常忽略时长与平淡片段。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
-        <h2>概念速览</h2>
-        <span class="section-meta">图表占位，可替换为自定义图表</span>
+        <h2>峰终定律</h2>
+        <span class="section-meta">体验由峰值与结尾决定</span>
       </div>
-      <div class="card chart-animate reveal">
-        <div class="chart-title"><span>章节结构示意</span></div>
-        <div class="matrix">
-          <div class="pill">引入</div>
-          <div class="pill">展开</div>
-          <div class="pill">对比</div>
-          <div class="pill">总结</div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title"><span>体验强度曲线（记忆只记住峰与尾）</span></div>
+          <svg viewBox="0 0 600 220" width="100%" height="200" aria-label="峰终定律示意">
+            <defs>
+              <linearGradient id="expGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="rgba(62,207,157,0.35)" />
+                <stop offset="100%" stop-color="rgba(62,207,157,0.02)" />
+              </linearGradient>
+            </defs>
+            <path d="M30 160 C90 150, 120 80, 170 95 C220 110, 240 170, 300 150 C360 130, 390 60, 450 90 C500 110, 530 130, 570 70" fill="none" stroke="#3ecf9d" stroke-width="4" />
+            <path d="M30 160 C90 150, 120 80, 170 95 C220 110, 240 170, 300 150 C360 130, 390 60, 450 90 C500 110, 530 130, 570 70 L570 200 L30 200 Z" fill="url(#expGrad)" />
+            <!-- 峰值标注 -->
+            <circle cx="390" cy="60" r="8" fill="#ff8ec7" />
+            <text x="390" y="45" text-anchor="middle" font-size="11" fill="#ff8ec7">峰值</text>
+            <!-- 结尾标注 -->
+            <circle cx="570" cy="70" r="8" fill="#7ad3ff" />
+            <text x="560" y="55" text-anchor="middle" font-size="11" fill="#7ad3ff">结尾</text>
+            <text x="300" y="200" text-anchor="middle" font-size="10" fill="rgba(245,247,255,0.6)">中间平淡区被记忆忽略</text>
+          </svg>
+          <p class="note">记忆≈峰值 + 结尾，与体验总时长关系不大。</p>
         </div>
-        <p class="note">可参考 revolutions.html 等示例页替换为 SVG 图表。</p>
+        <div class="card reveal">
+          <h3>经典实验</h3>
+          <p>让被试经历一段「痛苦的结尾」被改成「相对不那么难受」的延长版，他们反而给出更高评价——因为记忆自我记住了更平滑的结尾，即便总体体验更久。</p>
+          <div class="matrix">
+            <div class="pill">更短的痛 → 记作更糟</div>
+            <div class="pill">延长但更轻的尾 → 记作更好</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>峰终定律的应用</h2>
+        <span class="section-meta">设计体验与自我管理</span>
+      </div>
+      <div class="card reveal">
+        <ol class="heading-list">
+          <li>服务设计：把资源投入到峰值与结尾，而非平均分配。</li>
+          <li>团队激励：为项目设计「高光时刻」与体面的收尾，强化正面记忆。</li>
+          <li>自我回顾：警惕「以峰终替代全部」的倾向，用数据与日志还原真实体验。</li>
+          <li>决策辅助：回忆快乐时，别只信记忆自我的一句话总结。</li>
+        </ol>
       </div>
     </section>
 
@@ -107,7 +135,7 @@
       <a href="decisions.html">决策与生活 →</a>
     </div>
 
-    <div class="footer">《思考，快与慢》章节页 · 骨架模板。</div>
+    <div class="footer">《思考，快与慢》章节页 · 记忆自我导读。</div>
   </main>
   <script src="./books.js"></script>
   <script src="./app.js"></script>
