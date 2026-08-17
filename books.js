@@ -166,6 +166,43 @@ function getAllBooks() {
   return Object.assign({}, BOOKS, getRegisteredBooks());
 }
 
+/**
+ * 重命名一本动态注册的书（保留 id，避免破坏已关联内容与收藏的链接）。
+ * 同时会尝试同步「导入库」（library.js 的 book-template:library:v1）。
+ * @param {string} id - 要重命名的书籍 id
+ * @param {string} newTitle - 新书名
+ * @param {string} [newSubtitle] - 新副标题（可选）
+ * @returns {boolean} 是否成功
+ */
+function renameBook(id, newTitle, newSubtitle) {
+  if (!id || !newTitle || !newTitle.trim()) return false;
+  var books = getRegisteredBooks();
+  if (!books[id]) return false;
+  var book = books[id];
+  book.title = newTitle.trim();
+  if (newSubtitle) book.subtitle = newSubtitle.trim();
+  var ok = setRegisteredBooks(books);
+
+  // 同步「导入库」中的同名记录（若存在）
+  try {
+    var libRaw = window.localStorage.getItem("book-template:library:v1");
+    if (libRaw) {
+      var lib = JSON.parse(libRaw);
+      if (Array.isArray(lib)) {
+        var hit = lib.filter(function (b) { return b.id === id; });
+        if (hit.length) {
+          hit[0].title = newTitle.trim();
+          if (newSubtitle) hit[0].subtitle = newSubtitle.trim();
+          window.localStorage.setItem("book-template:library:v1", JSON.stringify(lib));
+        }
+      }
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return ok;
+}
+
 // 初始：把当前已注册的动态书籍并入全局 BOOKS，供 book-switcher 等同步使用。
 (function mergeRegisteredIntoBooks() {
   try {

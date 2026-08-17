@@ -34,6 +34,34 @@
         <span class="badge" data-book-badge-dynamic>动态书籍</span>
         <span class="badge" data-book-badge-source>来源：本地创建</span>
         <span class="badge" data-book-badge-status>未关联内容</span>
+        <span class="badge" data-book-manage-badge hidden style="cursor:pointer" title="管理此书" data-book-manage>管理 ⚙</span>
+      </div>
+    </section>
+
+    <!-- 书籍管理面板：重命名 / 删除（动态书专属） -->
+    <section class="section" data-book-manage-panel hidden>
+      <div class="section-head reveal">
+        <h2>管理《<span data-manage-title></span>》</h2>
+        <span class="section-meta">重命名或删除这本书（仅动态注册书籍）</span>
+      </div>
+      <div class="card reveal">
+        <form class="import-form" data-rename-form>
+          <h3>重命名</h3>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="rename_title" data-rename-title required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="rename_subtitle" data-rename-subtitle />
+          </label>
+          <button class="primary-btn" type="submit">保存重命名</button>
+        </form>
+      </div>
+      <div class="card reveal">
+        <h3>删除这本书</h3>
+        <p class="note">删除后将从书籍选择器与本地书库移除，且不可恢复。已导入的解析内容也会一并删除。</p>
+        <button type="button" class="ghost-btn danger" data-delete-book>删除《<span data-delete-title></span>》</button>
       </div>
     </section>
 

@@ -342,6 +342,84 @@
     }
   }
 
+  // ---- 书籍管理（重命名 / 删除）----
+  function bindManageForms(book) {
+    const badge = document.querySelector("[data-book-manage-badge]");
+    const panel = document.querySelector("[data-book-manage-panel]");
+    const manageTitle = document.querySelector("[data-manage-title]");
+    const deleteTitle = document.querySelector("[data-delete-title]");
+    const renameTitle = document.querySelector("[data-rename-title]");
+    const renameSubtitle = document.querySelector("[data-rename-subtitle]");
+
+    const setTitles = () => {
+      if (manageTitle) manageTitle.textContent = book.title;
+      if (deleteTitle) deleteTitle.textContent = book.title;
+      if (renameTitle) renameTitle.value = book.title;
+      if (renameSubtitle) renameSubtitle.value = book.subtitle && book.subtitle !== book.title ? book.subtitle : "";
+    };
+    setTitles();
+
+    if (badge && panel) {
+      badge.hidden = false;
+      badge.addEventListener("click", () => {
+        panel.hidden = !panel.hidden;
+      });
+    }
+
+    const renameForm = document.querySelector("[data-rename-form]");
+    if (renameForm) {
+      renameForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newTitle = renameTitle.value.trim();
+        if (!newTitle) {
+          alert("请输入新书名。");
+          return;
+        }
+        const ok =
+          typeof global.renameBook === "function"
+            ? global.renameBook(book.id, newTitle, renameSubtitle.value.trim())
+            : false;
+        if (!ok) {
+          alert("重命名失败，请稍后重试。");
+          return;
+        }
+        book.title = newTitle;
+        book.subtitle = renameSubtitle.value.trim() || newTitle;
+        setTitles();
+        // 刷新页面显示（标题、导航、badge 等随 currentBook 重新读取）
+        global.location.reload();
+      });
+    }
+
+    const deleteBtn = document.querySelector("[data-delete-book]");
+    if (deleteBtn) {
+      deleteBtn.addEventListener("click", () => {
+        if (!confirm(`确定要删除《${book.title}》吗？此操作不可恢复。`)) return;
+        if (typeof global.unregisterBook === "function") global.unregisterBook(book.id);
+        // 同步删除「导入库」记录
+        try {
+          const libRaw = global.localStorage.getItem("book-template:library:v1");
+          if (libRaw) {
+            const lib = JSON.parse(libRaw);
+            if (Array.isArray(lib)) {
+              global.localStorage.setItem(
+                "book-template:library:v1",
+                JSON.stringify(lib.filter((b) => b.id !== book.id))
+              );
+            }
+          }
+        } catch (_) {
+          /* ignore */
+        }
+        if (typeof global.dispatchEvent === "function") {
+          global.dispatchEvent(new CustomEvent("books:changed"));
+        }
+        // 删除后回到首页
+        global.location.href = "index.html";
+      });
+    }
+  }
+
   // ---- 视图切换 ----
   function activateView(book, activeView) {
     const valid = VIEWS.some((v) => v.key === activeView) ? activeView : "overview";
@@ -394,6 +472,7 @@
 
     bindImportForms(book);
     renderImportStatus(book);
+    bindManageForms(book);
 
     const activeView = new URLSearchParams(global.location.search).get("view") || "overview";
     activateView(book, activeView);
