@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>书籍阅读</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-reader>
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">书籍阅读</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links" data-reader-nav></div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title" data-book-title>书籍阅读</div>
+      <p data-book-summary>正在加载…</p>
+      <div class="badges">
+        <span class="badge" data-book-badge-dynamic>动态书籍</span>
+        <span class="badge" data-book-badge-source>来源：本地创建</span>
+        <span class="badge" data-book-badge-status>未关联内容</span>
+      </div>
+    </section>
+
+    <!-- 各视图容器：仅当前视图显示 -->
+    <section class="section" data-view="overview">
+      <div class="section-head reveal">
+        <h2>本书概览</h2>
+        <span class="section-meta" data-overview-meta>动态生成的阅读页</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="3" data-suffix="个">0</strong>
+          <span>核心视图</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="5" data-suffix="项">0</strong>
+          <span>阅读维度</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="1" data-suffix="册">0</strong>
+          <span>当前书籍</span>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>阅读路径建议</h3>
+        <p>先从「概览」建立全局印象，再进入「关键节点」「全书结构」逐层深入，最后用「阅读地图」「读后清单」复盘。本书为动态注册书籍，可在任意页面通过左上角切换器进入。</p>
+        <div class="matrix">
+          <div class="pill">概览 → 关键节点</div>
+          <div class="pill">全书结构 → 阅读地图</div>
+          <div class="pill">读后清单</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-view="chapters">
+      <div class="section-head reveal">
+        <h2>关键节点</h2>
+        <span class="section-meta">核心阅读要点</span>
+      </div>
+      <div class="grid-2" data-chapter-grid>
+        <div class="card reveal">
+          <h3>要点一</h3>
+          <p>在此填写本书的第一个核心观点或关键事件。可在阅读过程中逐步补充。</p>
+        </div>
+        <div class="card reveal">
+          <h3>要点二</h3>
+          <p>在此填写本书的第二个核心观点或关键事件。可在阅读过程中逐步补充。</p>
+        </div>
+        <div class="card reveal">
+          <h3>要点三</h3>
+          <p>在此填写本书的第三个核心观点或关键事件。可在阅读过程中逐步补充。</p>
+        </div>
+        <div class="card reveal">
+          <h3>本章小结</h3>
+          <p>在此总结本书的阅读收获与前后关联。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-view="structure">
+      <div class="section-head reveal">
+        <h2>全书结构</h2>
+        <span class="section-meta">章节与阅读路径</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>章节结构</h3>
+          <p data-structure-desc>本书为动态注册书籍，拥有独立的阅读页面。</p>
+          <div class="matrix">
+            <div class="pill">概览 → 章节 → 回看</div>
+            <div class="pill">卡片速读</div>
+            <div class="pill">图表导读</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>阅读地图</h3>
+          <p>使用顶部导航在各个视图间跳转，或通过左上角书籍切换器随时切到其他书籍。所有视图数据保存在本地，刷新后不会丢失。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-view="map">
+      <div class="section-head reveal">
+        <h2>阅读地图</h2>
+        <span class="section-meta">本书可访问的所有视图</span>
+      </div>
+      <div class="nav-cards" data-view-links></div>
+    </section>
+
+    <section class="section" data-view="questions">
+      <div class="section-head reveal">
+        <h2>读后问题清单</h2>
+        <span class="section-meta">复盘与迁移</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>解释力</h3>
+          <p>哪些观点最能解释现实？</p>
+        </div>
+        <div class="card reveal">
+          <h3>假设</h3>
+          <p>哪些前提需要验证？</p>
+        </div>
+        <div class="card reveal">
+          <h3>行动</h3>
+          <p>哪些内容可以实践？</p>
+        </div>
+        <div class="card reveal">
+          <h3>争议</h3>
+          <p>哪些分歧值得追踪？</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pager reveal" data-reader-pager></div>
+
+    <div class="footer">动态书籍阅读页 · 本地持久化。</div>
+  </main>
+
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-reader.js"></script>
+</body>
+</html>

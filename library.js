@@ -94,6 +94,12 @@
   function removeBook(id) {
     const list = readLibrary().filter((book) => book.id !== id);
     writeLibrary(list);
+    if (typeof window.unregisterBook === "function") {
+      window.unregisterBook(id);
+    }
+    if (typeof window.dispatchEvent === "function") {
+      window.dispatchEvent(new CustomEvent("books:changed"));
+    }
     renderLibrary();
   }
 
@@ -159,7 +165,7 @@
         contentMetaHtml(book) +
         `<p class="library-sub">${escapeHtml(book.sourceLabel || "")}</p>` +
         '<div class="library-actions">' +
-        `<a class="primary-btn" href="book-template.html?book=${encodeURIComponent(book.id)}">打开模板页</a>` +
+        `<a class="primary-btn" href="${escapeHtml(book.indexUrl || `book-template.html?book=${encodeURIComponent(book.id)}`)}">打开模板页</a>` +
         `<button type="button" class="ghost-btn danger" data-remove-book="${book.id}">删除</button>` +
         "</div>";
       listRoot.appendChild(card);
@@ -242,16 +248,58 @@
       return;
     }
 
-    const book = {
-      id: createId(rawTitle),
+    const id = createId(rawTitle);
+    const subtitle = subtitleInput?.value?.trim() || "新建阅读模板";
+    const indexUrl = `book.html?book=${encodeURIComponent(id)}`;
+    const label = rawTitle;
+
+    // 方式 C：生成「注册型」书籍 —— 写入动态书籍库，成为一等公民。
+    // 它会：
+    //   - 立即出现在左上角书籍切换器（getAllBooks() 读取）
+    //   - 拥有自己的动态「概览 + 章节」阅读页（book.html?book=<id>）
+    //   - 刷新 / 切换书籍后依然保留（books.js 启动时从 localStorage 并入 BOOKS）
+    const registered = {
+      id,
       title: rawTitle,
+      subtitle,
+      indexUrl,
+      dynamic: true,
+      pages: [
+        { label: "概览", href: indexUrl },
+        { label: "关键节点", href: `${indexUrl}&view=chapters` },
+        { label: "全书结构", href: `${indexUrl}&view=structure` },
+        { label: "阅读地图", href: `${indexUrl}&view=map` },
+        { label: "读后清单", href: `${indexUrl}&view=questions` },
+      ],
+    };
+
+    if (typeof window.registerBook === "function") {
+      window.registerBook(registered);
+    }
+
+    // 同时保留一份到「导入库」（含来源与创建时间，用于库列表展示）
+    const book = {
+      id,
+      title: rawTitle,
+      subtitle,
       sourceType: "title",
       sourceLabel: subtitleInput?.value?.trim() || "手动创建模板",
       createdAt: new Date().toISOString(),
+      registered: true,
+      indexUrl,
     };
 
     addBook(book);
-    showFeedback(`已生成《${rawTitle}》模板，可在下方库中打开模板页。`, "success");
+
+    // 通知书籍切换器刷新（若当前页面已挂载）
+    if (typeof window.dispatchEvent === "function") {
+      window.dispatchEvent(new CustomEvent("books:changed"));
+    }
+
+    showFeedback(
+      `已生成《${rawTitle}》整套模板：已加入左上角书籍选择器，可打开「${label}」阅读页。`,
+      "success"
+    );
     titleForm.reset();
   });
 

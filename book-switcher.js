@@ -19,7 +19,9 @@
   function renderOptions() {
     if (typeof BOOKS === 'undefined') return;
     list.innerHTML = '';
-    Object.values(BOOKS).forEach((book) => {
+    // 优先使用 getAllBooks()（含动态注册的书籍）；回退到内置 BOOKS
+    const allBooks = typeof getAllBooks === 'function' ? getAllBooks() : BOOKS;
+    Object.values(allBooks).forEach((book) => {
       const item = document.createElement('li');
       item.setAttribute('role', 'option');
       item.dataset.book = book.id;
@@ -40,7 +42,7 @@
     const bookId = typeof getCurrentBookId === 'function'
       ? getCurrentBookId(path)
       : 'sapiens';
-    const currentBook = typeof BOOKS !== 'undefined' ? BOOKS[bookId] : null;
+    const currentBook = typeof getAllBooks === 'function' ? getAllBooks()[bookId] : BOOKS[bookId];
     const label = currentBook?.title || '选择书籍';
     if (currentLabel) currentLabel.textContent = label;
     const options = list.querySelectorAll('[role="option"]');

@@ -78,5 +78,102 @@ function getCurrentBookId(pathname) {
   if (path === 'index-little-prince.html' || path === 'rose.html' || path === 'planets.html' || path === 'fox.html') {
     return 'little-prince';
   }
+  if (path === 'book.html') {
+    // book.html 的书籍 id 由 URL 查询参数 ?book=<id> 决定
+    try {
+      const id = new URLSearchParams(window.location.search).get('book');
+      if (id) return id;
+    } catch (_) {
+      /* ignore */
+    }
+  }
   return 'sapiens';
 }
+
+// ---------------------------------------------------------------------------
+// 动态书籍注册（方式 C 生成的书籍）
+//
+// 内置书籍（BOOKS）是静态注册的；通过「方式 C：输入书名」在浏览器里创建的书
+// 保存在 localStorage，由下面的 registry 在运行时并入全局 BOOKS。
+// 这样创建的新书会：
+//   - 立即出现在左上角的书籍切换器里
+//   - 在切换书籍 / 刷新页面后依然保留
+//   - 拥有自己的动态「概览 + 章节」阅读页面（book.html?book=<id>）
+// ---------------------------------------------------------------------------
+
+var BOOK_REGISTRY_KEY = 'book-template:registry:v1';
+
+/**
+ * 读取动态注册的书籍。返回一个按 id 索引的对象（其结构与 BOOKS 条目一致）。
+ * @returns {Object<string, object>}
+ */
+function getRegisteredBooks() {
+  try {
+    var raw = window.localStorage.getItem(BOOK_REGISTRY_KEY);
+    if (!raw) return {};
+    var parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return {};
+    return parsed;
+  } catch (_) {
+    return {};
+  }
+}
+
+/**
+ * 写入动态注册的书籍。
+ * @param {Object<string, object>} books - 按 id 索引的书籍对象
+ */
+function setRegisteredBooks(books) {
+  try {
+    window.localStorage.setItem(BOOK_REGISTRY_KEY, JSON.stringify(books || {}));
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+/**
+ * 注册（或更新）一本书到动态书籍库。
+ * 返回是否成功写入（localStorage 可能因空间/隐私限制而失败）。
+ * @param {object} book - 书籍对象（至少需含 id/title/pages）
+ * @returns {boolean}
+ */
+function registerBook(book) {
+  if (!book || !book.id) return false;
+  var books = getRegisteredBooks();
+  books[book.id] = book;
+  return setRegisteredBooks(books);
+}
+
+/**
+ * 取消注册一本书。
+ * @param {string} id - 书籍 id
+ */
+function unregisterBook(id) {
+  if (!id) return;
+  var books = getRegisteredBooks();
+  if (!books[id]) return;
+  delete books[id];
+  setRegisteredBooks(books);
+}
+
+/**
+ * 返回包含内置书籍与动态注册书籍在内的完整书籍表。
+ * 动态书优先（同 id 时以动态注册为准，便于覆盖/更新）。
+ * @returns {Object<string, object>}
+ */
+function getAllBooks() {
+  return Object.assign({}, BOOKS, getRegisteredBooks());
+}
+
+// 初始：把当前已注册的动态书籍并入全局 BOOKS，供 book-switcher 等同步使用。
+(function mergeRegisteredIntoBooks() {
+  try {
+    var registered = getRegisteredBooks();
+    Object.keys(registered).forEach(function (id) {
+      BOOKS[id] = registered[id];
+    });
+  } catch (_) {
+    /* ignore */
+  }
+})();
