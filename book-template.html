@@ -43,14 +43,14 @@
       <div class="badges">
         <span class="badge" data-book-source>来源：-</span>
         <span class="badge" data-book-source-label>-</span>
-        <span class="badge">模板：观点拆解 + 图表导读</span>
+        <span class="badge" data-mode-badge>模板：观点拆解 + 图表导读</span>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head reveal">
         <h2>关键指标</h2>
-        <span class="section-meta">自动生成示意值</span>
+        <span class="section-meta" data-stats-mode-note>自动生成示意值</span>
       </div>
       <div class="grid-3">
         <div class="stat reveal">
@@ -65,6 +65,38 @@
           <strong data-stat-value="2" data-count="0" data-suffix="%">0</strong>
           <span data-stat-label="2">争议张力</span>
         </div>
+      </div>
+    </section>
+
+    <section class="section" data-real-section hidden>
+      <div class="section-head reveal">
+        <h2>原文摘录</h2>
+        <span class="section-meta">解析自导入内容开头</span>
+      </div>
+      <div class="card reveal">
+        <p class="quote" data-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+      </div>
+    </section>
+
+    <section class="section" data-real-section hidden>
+      <div class="section-head reveal">
+        <h2>章节结构</h2>
+        <span class="section-meta" data-headings-count>从原文标题层级检测</span>
+      </div>
+      <div class="card reveal">
+        <ol class="heading-list" data-headings-root></ol>
+        <p class="note" data-headings-empty hidden>未检测到清晰的章节标题（PDF 无标题层级或网页缺少 h2/h3）。</p>
+      </div>
+    </section>
+
+    <section class="section" data-real-section hidden>
+      <div class="section-head reveal">
+        <h2>高频关键词</h2>
+        <span class="section-meta">来自全文词频统计</span>
+      </div>
+      <div class="card reveal">
+        <div class="kw-chips" data-keywords-root></div>
       </div>
     </section>
 

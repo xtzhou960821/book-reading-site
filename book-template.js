@@ -225,7 +225,178 @@
     };
   }
 
+  function fillRealContent(book) {
+    const c = book.content;
+    const esc = (t) =>
+      String(t)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    const sourceName = book.sourceType === "url" ? "网址" : "PDF";
+
+    document.title = `${book.title} · 内容解析`;
+    text(document.querySelector("[data-book-title]"), `《${book.title}》· 内容解析`);
+    text(
+      document.querySelector("[data-book-summary]"),
+      `已从${sourceName}解析真实内容：约 ${Number(c.wordCount).toLocaleString()} 字、${c.sentenceCount} 句，` +
+        `${c.pages ? `共 ${c.pages} 页，` : ""}检测到 ${c.headings.length} 个章节标题，预计阅读 ${c.readingMinutes} 分钟。`
+    );
+    text(document.querySelector("[data-book-source]"), `来源：${sourceName}`);
+    text(document.querySelector("[data-book-source-label]"), book.sourceLabel || "-");
+    text(
+      document.querySelector("[data-mode-badge]"),
+      c.engine === "pdf" ? "PDF 文字层解析" : "网页正文抓取"
+    );
+
+    // 关键指标：真实统计值
+    const statDefs = [
+      { value: c.wordCount, suffix: "字", label: "总字数（中文字 + 英文词）" },
+      { value: c.pages || c.headings.length, suffix: c.pages ? "页" : "章", label: c.pages ? "文档页数" : "章节标题数" },
+      { value: c.readingMinutes, suffix: "分钟", label: "预计阅读时长" },
+    ];
+    statDefs.forEach((def, index) => {
+      const num = document.querySelector(`[data-stat-value='${index}']`);
+      const label = document.querySelector(`[data-stat-label='${index}']`);
+      if (num) {
+        num.dataset.count = String(def.value);
+        num.dataset.suffix = def.suffix;
+        num.textContent = "0";
+      }
+      text(label, def.label);
+    });
+    text(document.querySelector("[data-stats-mode-note]"), "解析自导入原文，非示意值");
+
+    // 阅读主线：原文开篇 / 中段 / 收尾
+    const s = c.sample || "";
+    const third = Math.floor(s.length / 3);
+    const slice = (from, len) =>
+      (s.slice(from, from + len) || "（样本过短）").replace(/\s+/g, " ");
+    text(document.querySelector("[data-stage-title='0']"), "开篇");
+    text(document.querySelector("[data-stage-body='0']"), slice(0, 90));
+    text(document.querySelector("[data-stage-title='1']"), "中段");
+    text(document.querySelector("[data-stage-body='1']"), slice(third, 90));
+    text(document.querySelector("[data-stage-title='2']"), "收尾");
+    text(document.querySelector("[data-stage-body='2']"), slice(Math.max(0, s.length - 90), 90));
+
+    // 核心观点卡片：基于词频统计
+    const kwWords = c.keywords.map((k) => k.word);
+    text(document.querySelector("[data-point-title='0']"), "核心命题");
+    text(
+      document.querySelector("[data-point-body='0']"),
+      kwWords.length
+        ? `全文高频概念集中在：${kwWords.slice(0, 6).join("、")}。`
+        : "全文较短，未形成显著高频概念。"
+    );
+    text(document.querySelector("[data-point-title='1']"), "关键证据");
+    text(
+      document.querySelector("[data-point-body='1']"),
+      `样本统计：${c.sentenceCount} 句、平均句长 ${c.avgSentenceLen} 字，用于支撑以上概念分布。`
+    );
+    text(document.querySelector("[data-point-title='2']"), "反方视角");
+    text(
+      document.querySelector("[data-point-body='2']"),
+      "词频统计只反映文本表层结构，需通读原文以识别作者未展开的反面论证。"
+    );
+    text(document.querySelector("[data-point-title='3']"), "实践建议");
+    text(
+      document.querySelector("[data-point-body='3']"),
+      `预计阅读 ${c.readingMinutes} 分钟。建议先读「${c.headings[0] || "开篇"}」建立框架，再按章节结构精读。`
+    );
+
+    // 章节结构
+    const headingsRoot = document.querySelector("[data-headings-root]");
+    const headingsEmpty = document.querySelector("[data-headings-empty]");
+    const headingsCount = document.querySelector("[data-headings-count]");
+    if (c.headings.length) {
+      headingsRoot.innerHTML = "";
+      c.headings.forEach((h) => {
+        const li = document.createElement("li");
+        li.textContent = h;
+        headingsRoot.appendChild(li);
+      });
+      if (headingsEmpty) headingsEmpty.hidden = true;
+      if (headingsCount) headingsCount.textContent = `检测到 ${c.headings.length} 个标题`;
+    } else {
+      if (headingsRoot) headingsRoot.innerHTML = "";
+      if (headingsEmpty) headingsEmpty.hidden = false;
+      if (headingsCount) headingsCount.textContent = "未检测到章节标题";
+    }
+
+    // 高频关键词
+    const kwRoot = document.querySelector("[data-keywords-root]");
+    if (kwRoot) {
+      kwRoot.innerHTML = "";
+      if (!c.keywords.length) {
+        const p = document.createElement("p");
+        p.className = "note";
+        p.textContent = "文本过短，未统计出高频关键词。";
+        kwRoot.appendChild(p);
+      } else {
+        c.keywords.forEach((k) => {
+          const span = document.createElement("span");
+          span.className = "kw-chip";
+          span.innerHTML = `${esc(k.word)}<b>×${k.count}</b>`;
+          span.dataset.tip = `出现 ${k.count} 次`;
+          kwRoot.appendChild(span);
+        });
+      }
+    }
+
+    // 原文摘录
+    text(document.querySelector("[data-excerpt]"), c.excerpt || "（无摘录）");
+    const noteEl = document.querySelector("[data-content-note]");
+    const noteParts = [];
+    if (c.note) noteParts.push(c.note);
+    if (c.quotaTrimmed) noteParts.push("存储空间有限，样本已截短");
+    if (noteEl) {
+      if (noteParts.length) {
+        noteEl.hidden = false;
+        noteEl.textContent = "备注：" + noteParts.join("；");
+      } else {
+        noteEl.hidden = true;
+      }
+    }
+
+    // 展示真实内容区块
+    document.querySelectorAll("[data-real-section]").forEach((section) => {
+      section.hidden = false;
+    });
+
+    // 图表数据
+    window.bookChartData = c.chartBars;
+    window.bookLineChartData = c.chart;
+
+    // 柱状图 tab 文案
+    const tabGroup = document.querySelector("[data-tab-group='impact']");
+    if (tabGroup) {
+      const tabLabels = { population: "结构词汇", wellbeing: "句法节奏", ecology: "文本特征" };
+      tabGroup.querySelectorAll("[data-tab]").forEach((btn) => {
+        const label = tabLabels[btn.dataset.tab];
+        if (label) btn.textContent = label;
+      });
+    }
+
+    // 折线图图例文案
+    const lineSeries = c.chart["book-trends"].series;
+    document.querySelectorAll("[data-line-chart-key] [data-series]").forEach((btn) => {
+      const meta = lineSeries[btn.dataset.series];
+      if (!meta) return;
+      const icon = btn.querySelector("i");
+      if (icon && icon.nextSibling) icon.nextSibling.nodeValue = " " + meta.name;
+    });
+    const lineNote = document.querySelector("[data-line-chart-key] .note");
+    if (lineNote) {
+      lineNote.textContent = "展示导入原文在五个阅读阶段的真实指标变化（可点击图例显隐）。";
+    }
+  }
+
   function fillBook(book) {
+    if (book.content) {
+      fillRealContent(book);
+      return;
+    }
     document.title = `${book.title} · 通用导读模板`;
     text(document.querySelector("[data-book-title]"), `《${book.title}》· 通用导读模板`);
     text(

@@ -28,8 +28,9 @@
   function writeLibrary(list) {
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, MAX_BOOKS)));
+      return true;
     } catch (_) {
-      // Ignore quota or restricted storage failures.
+      return false;
     }
   }
 
@@ -79,7 +80,13 @@
   function addBook(item) {
     const list = readLibrary();
     const next = [item, ...list.filter((book) => book.id !== item.id)];
-    writeLibrary(next);
+    if (!writeLibrary(next) && item.content) {
+      // 配额不足：缩短存储样本后重试一次
+      item.content.sample = (item.content.sample || "").slice(0, 2000);
+      item.content.excerpt = (item.content.excerpt || "").slice(0, 300);
+      item.content.quotaTrimmed = true;
+      writeLibrary([item, ...list.filter((book) => book.id !== item.id)]);
+    }
     renderLibrary();
   }
 
@@ -100,6 +107,22 @@
     } catch (_) {
       return "--";
     }
+  }
+
+  function contentMetaHtml(book) {
+    const c = book.content;
+    if (!c) return "";
+    const parts = [`解析 ${Number(c.wordCount).toLocaleString()} 字`];
+    if (c.pages) parts.push(`${c.pages} 页`);
+    if (c.headings && c.headings.length) parts.push(`${c.headings.length} 个章节`);
+    parts.push(`约 ${c.readingMinutes} 分钟`);
+    const kw = (c.keywords || []).slice(0, 3).map((k) => k.word).join(" / ");
+    return (
+      `<p class="library-meta">已解析：${parts.join(" · ")}` +
+      (kw ? ` ｜ 高频词：${escapeHtml(kw)}` : "") +
+      (c.note ? ` ｜ 备注：${escapeHtml(c.note)}` : "") +
+      "</p>"
+    );
   }
 
   function renderLibrary() {
@@ -125,6 +148,7 @@
         `<p class="library-meta">来源：${book.sourceType === "url" ? "网址" : "PDF"} · 导入于 ${formatDate(
           book.createdAt
         )}</p>` +
+        contentMetaHtml(book) +
         `<p class="library-sub">${escapeHtml(book.sourceLabel || "")}</p>` +
         '<div class="library-actions">' +
         `<a class="primary-btn" href="book-template.html?book=${encodeURIComponent(book.id)}">打开模板页</a>` +
@@ -143,7 +167,7 @@
       .replace(/'/g, "&#39;");
   }
 
-  urlForm.addEventListener("submit", (event) => {
+  urlForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const urlInput = urlForm.querySelector("[name='book_url']");
     const titleInput = urlForm.querySelector("[name='book_url_title']");
@@ -176,12 +200,30 @@
       createdAt: new Date().toISOString(),
     };
 
+    let content = null;
+    if (typeof BookExtract !== "undefined") {
+      showFeedback("正在抓取页面正文…", "info");
+      try {
+        content = await BookExtract.extractUrlContent(parsed.toString(), (stage) => {
+          showFeedback(`正在抓取页面正文…（${stage === "直连" ? "直连" : "经代理"}）`, "info");
+        });
+      } catch (_) {
+        showFeedback("网页抓取失败（跨域或网络限制），仅保存书名与来源。", "error");
+      }
+    }
+
+    book.content = content;
     addBook(book);
-    showFeedback("已从网址创建模板书籍，可在下方列表打开。", "success");
+    if (content) {
+      showFeedback(
+        `导入成功：抓取 ${Number(content.wordCount).toLocaleString()} 字、${content.headings.length} 个章节，预计阅读 ${content.readingMinutes} 分钟。`,
+        "success"
+      );
+    }
     urlForm.reset();
   });
 
-  pdfForm.addEventListener("submit", (event) => {
+  pdfForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const fileInput = pdfForm.querySelector("[name='book_pdf']");
     const titleInput = pdfForm.querySelector("[name='book_pdf_title']");
@@ -207,8 +249,33 @@
       createdAt: new Date().toISOString(),
     };
 
+    let content = null;
+    if (typeof BookExtract !== "undefined") {
+      showFeedback("正在解析 PDF…", "info");
+      try {
+        content = await BookExtract.extractPdfFromFile(file, (page, total) => {
+          showFeedback(`正在解析 PDF… 第 ${page}/${total} 页`, "info");
+        });
+      } catch (e) {
+        const code = e && e.code;
+        if (code === "no-text") {
+          showFeedback("未检测到文字层（可能是扫描件），仅保存书名与来源。", "error");
+        } else if (e && e.message === "pdfjs-not-loaded") {
+          showFeedback("PDF 解析引擎未加载，仅保存书名。", "error");
+        } else {
+          showFeedback("PDF 解析失败，仅保存书名（建议通过本地服务器打开本网站后重试）。", "error");
+        }
+      }
+    }
+
+    book.content = content;
     addBook(book);
-    showFeedback("已从 PDF 创建模板书籍，可在下方列表打开。", "success");
+    if (content) {
+      showFeedback(
+        `导入成功：解析 ${Number(content.wordCount).toLocaleString()} 字、${content.pages} 页，预计阅读 ${content.readingMinutes} 分钟。`,
+        "success"
+      );
+    }
     pdfForm.reset();
   });
 

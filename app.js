@@ -354,7 +354,11 @@ function updateChart(chartEl, tab, skipAnimation) {
     }
     const caption = bar.closest("div")?.querySelector(".bar-caption");
     if (caption) {
-      bar.dataset.tip = `${caption.textContent} · ${value}`;
+      const capText = dataSet.captions?.[index] || caption.textContent;
+      bar.dataset.tip = `${capText} · ${value}`;
+      if (dataSet.captions) {
+        caption.textContent = dataSet.captions[index];
+      }
     }
     if (values[index]) {
       values[index].textContent = value;
