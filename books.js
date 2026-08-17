@@ -46,6 +46,19 @@ const BOOKS = {
       { label: '政府职责', href: 'index-wealth.html#government' },
     ],
   },
+  'little-prince': {
+    id: 'little-prince',
+    title: '小王子',
+    subtitle: 'The Little Prince',
+    indexUrl: 'index-little-prince.html',
+    pages: [
+      { label: '概览', href: 'index-little-prince.html' },
+      { label: '导入中心', href: 'index-little-prince.html#import-hub' },
+      { label: '玫瑰与驯服', href: 'rose.html' },
+      { label: '星球之旅', href: 'planets.html' },
+      { label: '狐狸与本质', href: 'fox.html' },
+    ],
+  },
 };
 
 /**
@@ -61,6 +74,9 @@ function getCurrentBookId(pathname) {
   if (path.startsWith('index-100years') || path === 'family.html' || path === 'magic-realism.html' ||
       path === 'cycles.html' || path === 'solitude.html' || path === 'controversy-100years.html') {
     return '100years';
+  }
+  if (path === 'index-little-prince.html' || path === 'rose.html' || path === 'planets.html' || path === 'fox.html') {
+    return 'little-prince';
   }
   return 'sapiens';
 }

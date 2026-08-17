@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《小王子》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page">
+    <header class="topbar reveal">
+      <nav class="nav">
+<div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">小王子</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index-little-prince.html">概览</a>
+          <a class="nav-link" href="index-little-prince.html#import-hub">导入中心</a>
+          <a class="nav-link" href="rose.html">玫瑰与驯服</a>
+          <a class="nav-link" href="planets.html">星球之旅</a>
+          <a class="nav-link" href="fox.html">狐狸与本质</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《小王子》</div>
+      <p>一部写给大人的童话：驯服、责任与看不见的本质。</p>
+      <div class="badges">
+        <span class="badge">驯服与责任</span>
+        <span class="badge">看不见的本质</span>
+        <span class="badge">成人世界的讽刺</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以先从网址或 PDF 创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键节点速读</h2>
+        <span class="section-meta">小王子旅程的核心数据</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="6" data-suffix="颗">0</strong>
+          <span>拜访过的星球</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="1" data-suffix="朵">0</strong>
+          <span>独一无二的玫瑰</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="3" data-suffix="天">0</strong>
+          <span>他曾看过的最多日落</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">离开 B-612 → 星球漫游 → 遇见狐狸</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>旅程即寓言</h3>
+          <p>小王子离开自己的小行星，逐一拜访六颗星球上的大人——国王、爱慕虚荣者、酒鬼、商人、点灯人、地理学家——每一站都是一则成人世界的讽刺。</p>
+          <div class="matrix">
+            <div class="pill">玫瑰 → 责任</div>
+            <div class="pill">星球 → 讽刺</div>
+            <div class="pill">狐狸 → 本质</div>
+            <div class="pill">蛇 → 告别</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>核心隐喻链</h3>
+          <p>「驯服」建立联系，「联系」产生责任，「责任」让事物变得独一无二——而这一切，用眼睛都看不见，只能用心去感受。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入章节页面</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="rose.html">
+          <h3>玫瑰与驯服</h3>
+          <span>独一无二的玫瑰：建立联系与承担责任</span>
+        </a>
+        <a class="nav-card reveal" href="planets.html">
+          <h3>星球之旅</h3>
+          <span>六颗星球上的大人：成人世界的六则讽刺</span>
+        </a>
+        <a class="nav-card reveal" href="fox.html">
+          <h3>狐狸与本质</h3>
+          <span>「重要的东西用眼睛是看不见的」：仪式与用心</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">下一站：从「玫瑰与驯服」开始旅程。此页面由 add-book.js 生成，内容可自由编辑。</div>
+  </main>
+  <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+</body>
+</html>
