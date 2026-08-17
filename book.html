@@ -59,12 +59,125 @@
       </div>
       <div class="card reveal">
         <h3>阅读路径建议</h3>
-        <p>先从「概览」建立全局印象，再进入「关键节点」「全书结构」逐层深入，最后用「阅读地图」「读后清单」复盘。本书为动态注册书籍，可在任意页面通过左上角切换器进入。</p>
+        <p>先从「概览」建立全局印象，再进入「关键节点」「全书结构」逐层深入，最后用「阅读地图」「读后清单」复盘。可通过「导入中心」导入本书的 PDF 或网页，自动填充真实内容。</p>
         <div class="matrix">
           <div class="pill">概览 → 关键节点</div>
           <div class="pill">全书结构 → 阅读地图</div>
           <div class="pill">读后清单</div>
+          <div class="pill">导入中心 → 关联内容</div>
         </div>
+      </div>
+    </section>
+
+    <!-- 导入中心：为本书导入 PDF / 网页，解析后存入本书 -->
+    <section class="section" data-view="import">
+      <div class="section-head reveal">
+        <h2>导入中心</h2>
+        <span class="section-meta">为《<span data-import-book-title></span>》导入 PDF 或网页，自动解析真实内容</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后自动把真实摘录、章节结构、高频词与统计填充到「关联内容」视图。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <button class="primary-btn" type="submit">抓取并解析正文</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <button class="primary-btn" type="submit">解析 PDF</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>关联状态</h3>
+          <span class="section-meta" data-import-status>尚未导入内容</span>
+        </div>
+        <p class="note" data-import-empty>本书还没有关联任何解析内容。导入后会自动填充到「关联内容」视图。</p>
+      </div>
+    </section>
+
+    <!-- 关联内容：展示导入的真实内容 -->
+    <section class="section" data-view="content">
+      <div class="section-head reveal">
+        <h2>关联内容</h2>
+        <span class="section-meta" data-content-meta>尚未导入内容</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
       </div>
     </section>
 
@@ -154,6 +267,8 @@
   </main>
 
   <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
   <script src="./app.js"></script>
   <script src="./book-switcher.js"></script>
   <script src="./book-reader.js"></script>

@@ -2,16 +2,20 @@
  * book-reader.js — 动态书籍阅读器
  *
  * 为「方式 C：输入书名」在浏览器里创建的动态注册书籍提供完整的
- * 「概览 + 关键节点 + 全书结构 + 阅读地图 + 读后清单」多视图阅读页。
+ * 「概览 + 导入中心 + 关联内容 + 关键节点 + 全书结构 + 阅读地图 + 读后清单」
+ * 多视图阅读页。
  *
  * 页面：book.html?book=<id>
  * 书籍来源：books.js 中的动态注册表（localStorage `book-template:registry:v1`）
+ * 内容解析：content-extract.js（BookExtract）
  */
 (function (global) {
   "use strict";
 
   const VIEWS = [
     { key: "overview", label: "概览" },
+    { key: "import", label: "导入中心" },
+    { key: "content", label: "关联内容" },
     { key: "chapters", label: "关键节点" },
     { key: "structure", label: "全书结构" },
     { key: "map", label: "阅读地图" },
@@ -19,31 +23,13 @@
   ];
 
   const VIEW_LINKS = {
-    overview: {
-      desc: "建立对本书的整体印象",
-      view: "overview",
-      label: "本书概览",
-    },
-    chapters: {
-      desc: "核心阅读要点",
-      view: "chapters",
-      label: "关键节点",
-    },
-    structure: {
-      desc: "章节与阅读路径",
-      view: "structure",
-      label: "全书结构",
-    },
-    map: {
-      desc: "本书所有视图的总览",
-      view: "map",
-      label: "阅读地图",
-    },
-    questions: {
-      desc: "复盘与迁移",
-      view: "questions",
-      label: "读后问题清单",
-    },
+    overview: { desc: "建立对本书的整体印象", label: "本书概览" },
+    import: { desc: "为本书导入 PDF / 网页并解析", label: "导入中心" },
+    content: { desc: "展示导入的真实内容", label: "关联内容" },
+    chapters: { desc: "核心阅读要点", label: "关键节点" },
+    structure: { desc: "章节与阅读路径", label: "全书结构" },
+    map: { desc: "本书所有视图的总览", label: "阅读地图" },
+    questions: { desc: "复盘与迁移", label: "读后问题清单" },
   };
 
   function currentBook() {
@@ -89,7 +75,7 @@
   }
 
   // ---- 章节页（关键节点）----
-  function renderChapters(book) {
+  function renderChapters() {
     const root = document.querySelector("[data-chapter-grid]");
     if (!root) return;
     root.innerHTML = "";
@@ -111,12 +97,12 @@
   function renderStructure(book) {
     const desc = document.querySelector("[data-structure-desc]");
     if (desc) {
-      desc.textContent = `本书《${book.title}》为动态注册书籍，通过「概览、关键节点、全书结构、阅读地图、读后清单」五个视图组织阅读。`;
+      desc.textContent = `本书《${book.title}》为动态注册书籍，通过「概览、导入中心、关联内容、关键节点、全书结构、阅读地图、读后清单」等视图组织阅读。`;
     }
   }
 
   // ---- 阅读地图 ----
-  function renderMap(book) {
+  function renderMap() {
     const root = document.querySelector("[data-view-links]");
     if (!root) return;
     root.innerHTML = "";
@@ -133,16 +119,227 @@
   }
 
   // ---- 底部翻页 ----
-  function renderPager(activeView, book) {
+  function renderPager(activeView) {
     const root = document.querySelector("[data-reader-pager]");
     if (!root) return;
     const idx = VIEWS.findIndex((v) => v.key === activeView);
     const prev = idx > 0 ? VIEWS[idx - 1] : null;
     const next = idx < VIEWS.length - 1 ? VIEWS[idx + 1] : null;
-    const id = new URLSearchParams(global.location.search).get("book") || "";
     root.innerHTML =
       (prev ? `<a href="${buildHref(prev.key)}">← ${esc(prev.label)}</a>` : `<span></span>`) +
       (next ? `<a href="${buildHref(next.key)}">${esc(next.label)} →</a>` : `<a href="index.html">返回首页 →</a>`);
+  }
+
+  // ---- 真实内容渲染 ----
+  function renderContent(book) {
+    const c = book.content;
+    document.querySelectorAll("[data-content-scope], [data-content-chart]").forEach((s) => {
+      s.hidden = !c;
+    });
+
+    const excerpt = document.querySelector("[data-content-excerpt]");
+    if (excerpt) excerpt.textContent = c ? c.excerpt || "（无摘录）" : "";
+
+    const note = document.querySelector("[data-content-note]");
+    if (note) {
+      const parts = [];
+      if (c && c.note) parts.push(c.note);
+      if (c && c.quotaTrimmed) parts.push("存储空间有限，样本已截短");
+      note.hidden = parts.length === 0;
+      note.textContent = parts.length ? "备注：" + parts.join("；") : "";
+    }
+
+    const headingsRoot = document.querySelector("[data-content-headings]");
+    const headingsEmpty = document.querySelector("[data-content-headings-empty]");
+    const headingsCount = document.querySelector("[data-content-headings-count]");
+    if (headingsRoot) {
+      headingsRoot.innerHTML = "";
+      (c ? c.headings : []).forEach((h) => {
+        const li = document.createElement("li");
+        li.textContent = h;
+        headingsRoot.appendChild(li);
+      });
+      if (headingsEmpty) headingsEmpty.hidden = c && c.headings.length > 0;
+      if (headingsCount) headingsCount.textContent = `检测到 ${c ? c.headings.length : 0} 个标题`;
+    }
+
+    const kwRoot = document.querySelector("[data-content-keywords]");
+    if (kwRoot) {
+      kwRoot.innerHTML = "";
+      if (!c || !c.keywords || !c.keywords.length) {
+        const p = document.createElement("p");
+        p.className = "note";
+        p.textContent = c ? "文本过短，未统计出高频关键词。" : "尚未导入内容。";
+        kwRoot.appendChild(p);
+      } else {
+        c.keywords.forEach((k) => {
+          const span = document.createElement("span");
+          span.className = "kw-chip";
+          span.innerHTML = esc(k.word) + "<b>×" + k.count + "</b>";
+          span.dataset.tip = "出现 " + k.count + " 次";
+          kwRoot.appendChild(span);
+        });
+      }
+    }
+
+    const stats = {
+      words: { value: c ? c.wordCount : 0, suffix: "字" },
+      pages: { value: c ? c.pages || (c.headings || []).length : 0, suffix: c && c.pages ? "页" : "章" },
+      minutes: { value: c ? c.readingMinutes : 0, suffix: "分钟" },
+    };
+    document.querySelectorAll("[data-auto-stat]").forEach((el) => {
+      const def = stats[el.dataset.autoStat];
+      if (!def) return;
+      el.textContent = Number(def.value || 0).toLocaleString() + (el.dataset.suffix || def.suffix || "");
+    });
+
+    const chartRoot = document.querySelector("[data-content-chart]");
+    if (chartRoot) {
+      if (c && c.chartBars) initContentChart(chartRoot, c.chartBars);
+      else chartRoot.hidden = true;
+    }
+
+    const meta = document.querySelector("[data-content-meta]");
+    if (meta) {
+      meta.textContent = c
+        ? `已导入：${Number(c.wordCount).toLocaleString()} 字、${c.headings.length} 章节、约 ${c.readingMinutes} 分钟`
+        : "尚未导入内容";
+    }
+  }
+
+  // ---- 柱状图（自管 tab，不依赖 app.js 的 tab 机制）----
+  function initContentChart(root, chartBars) {
+    const panel = (chartBars && chartBars.impact) || chartBars;
+    if (!panel) return;
+    const tabs = Array.from(root.querySelectorAll("[data-tab]"));
+    if (!tabs.length) return;
+
+    const setTab = (tab) => {
+      const dataSet = panel[tab];
+      if (!dataSet) return;
+      tabs.forEach((btn) => {
+        const on = btn.dataset.tab === tab;
+        btn.classList.toggle("active", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      const bars = root.querySelectorAll("[data-chart-bars] .bar-vertical span");
+      const values = root.querySelectorAll("[data-chart-bars] [data-bar-value]");
+      bars.forEach((bar, i) => {
+        const v = dataSet.values[i] ?? 0;
+        bar.style.height = v + "%";
+        if (dataSet.colors && dataSet.colors[i]) bar.style.background = dataSet.colors[i];
+        const capEl = bar.closest("div") && bar.closest("div").querySelector(".bar-caption");
+        const capText = (dataSet.captions && dataSet.captions[i]) || (capEl ? capEl.textContent : "");
+        bar.dataset.tip = capText + " · " + v;
+        if (capEl) capEl.textContent = capText;
+        if (values[i]) values[i].textContent = v;
+      });
+      const label = root.querySelector("[data-chart-label]");
+      if (label) label.textContent = dataSet.label || "";
+      const note = root.querySelector("[data-chart-note]");
+      if (note) note.textContent = dataSet.note || "";
+    };
+
+    tabs.forEach((btn) => btn.addEventListener("click", () => setTab(btn.dataset.tab)));
+    setTab(tabs[0].dataset.tab);
+  }
+
+  // ---- 导入中心 ----
+  function bindImportForms(book) {
+    const feedback = document.querySelector("[data-import-feedback]");
+    const show = (msg, tone) => {
+      if (!feedback) return;
+      feedback.textContent = msg;
+      feedback.dataset.tone = tone || "info";
+    };
+
+    const saveContent = (content, sourceLabel) => {
+      const updated = Object.assign({}, book, {
+        content,
+        sourceLabel,
+        sourceType: content.engine === "pdf" ? "pdf" : "url",
+        updatedAt: new Date().toISOString(),
+      });
+      // 更新动态注册表（books.js）
+      if (typeof global.registerBook === "function") global.registerBook(updated);
+      // 同步更新当前对象，供后续渲染
+      Object.keys(updated).forEach((k) => (book[k] = updated[k]));
+      show(
+        `导入成功：解析 ${Number(content.wordCount).toLocaleString()} 字、${content.headings.length} 个章节，预计阅读 ${content.readingMinutes} 分钟。`,
+        "success"
+      );
+      renderImportStatus(book);
+      // 跳到关联内容视图展示
+      global.location.hash = "";
+      activateView(book, "content");
+    };
+
+    const urlForm = document.querySelector("[data-url-import-form]");
+    if (urlForm) {
+      urlForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const input = urlForm.querySelector("[name='book_url']");
+        const rawUrl = input && input.value.trim();
+        if (!rawUrl) return show("请先输入书籍网址。", "error");
+        let parsed;
+        try {
+          parsed = new URL(rawUrl);
+          if (!["http:", "https:"].includes(parsed.protocol)) throw new Error();
+        } catch (_) {
+          return show("网址格式无效，请检查。", "error");
+        }
+        if (typeof BookExtract === "undefined") return show("解析引擎未加载。", "error");
+        show("正在抓取页面正文…", "info");
+        try {
+          const content = await BookExtract.extractUrlContent(parsed.toString(), (stage) => {
+            show(`正在抓取页面正文…（${stage === "直连" ? "直连" : "经代理"}）`, "info");
+          });
+          saveContent(content, parsed.toString());
+        } catch (_) {
+          show("网页抓取失败（跨域或网络限制），仅能保存书名与来源。", "error");
+        }
+        urlForm.reset();
+      });
+    }
+
+    const pdfForm = document.querySelector("[data-pdf-import-form]");
+    if (pdfForm) {
+      pdfForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const file = pdfForm.querySelector("[name='book_pdf']").files[0];
+        if (!file) return show("请先选择 PDF 文件。", "error");
+        if (!/\.pdf$/i.test(file.name)) return show("仅支持 PDF 文件导入。", "error");
+        if (typeof BookExtract === "undefined") return show("PDF 解析引擎未加载。", "error");
+        show("正在解析 PDF…", "info");
+        try {
+          const content = await BookExtract.extractPdfFromFile(file, (page, total) => {
+            show(`正在解析 PDF… 第 ${page}/${total} 页`, "info");
+          });
+          saveContent(content, `${file.name} (${Math.max(1, Math.round(file.size / 1024))} KB)`);
+        } catch (e) {
+          const code = e && e.code;
+          if (code === "no-text") show("未检测到文字层（可能是扫描件），仅保存书名。", "error");
+          else if (e && e.message === "pdfjs-not-loaded") show("PDF 解析引擎未加载。", "error");
+          else show("PDF 解析失败（建议通过本地服务器打开后重试）。", "error");
+        }
+        pdfForm.reset();
+      });
+    }
+  }
+
+  function renderImportStatus(book) {
+    const status = document.querySelector("[data-import-status]");
+    const empty = document.querySelector("[data-import-empty]");
+    const titleEl = document.querySelector("[data-import-book-title]");
+    if (titleEl) titleEl.textContent = book.title;
+    if (book.content) {
+      const c = book.content;
+      if (status) status.textContent = `已导入：${Number(c.wordCount).toLocaleString()} 字、${c.headings.length} 章节`;
+      if (empty) empty.hidden = true;
+    } else {
+      if (status) status.textContent = "尚未导入内容";
+      if (empty) empty.hidden = false;
+    }
   }
 
   // ---- 视图切换 ----
@@ -151,17 +348,18 @@
     document.querySelectorAll("[data-view]").forEach((section) => {
       section.style.display = section.dataset.view === valid ? "" : "none";
     });
-    // 已进入视野的元素触发一次 reveal 动画
     document.querySelectorAll(`[data-view="${valid}"] .reveal`).forEach((el) => {
       if (!el.classList.contains("in-view")) el.classList.add("in-view");
     });
 
     renderNav(valid);
-    renderPager(valid, book);
+    renderPager(valid);
     if (valid === "overview") renderOverview(book);
-    else if (valid === "chapters") renderChapters(book);
+    else if (valid === "chapters") renderChapters();
     else if (valid === "structure") renderStructure(book);
-    else if (valid === "map") renderMap(book);
+    else if (valid === "map") renderMap();
+    else if (valid === "import") renderImportStatus(book);
+    else if (valid === "content") renderContent(book);
   }
 
   // ---- 主入口 ----
@@ -187,12 +385,15 @@
     const summary = document.querySelector("[data-book-summary]");
     if (titleEl) titleEl.textContent = `《${book.title}》`;
     if (summary) {
-      summary.textContent = `「${book.title}」的动态阅读页面。可用顶部导航切换视图，或通过左上角选择器切换书籍。`;
+      summary.textContent = `「${book.title}」的动态阅读页面。可用顶部导航切换视图，或通过「导入中心」导入 PDF / 网页填充真实内容。`;
     }
     const badge = document.querySelector("[data-book-badge-status]");
-    if (badge) badge.textContent = book.dynamic ? "动态书籍" : "阅读书籍";
+    if (badge) badge.textContent = book.content ? "已关联内容" : book.dynamic ? "动态书籍" : "阅读书籍";
     const src = document.querySelector("[data-book-badge-source]");
     if (src) src.textContent = `来源：${book.subtitle || "本地创建"}`;
+
+    bindImportForms(book);
+    renderImportStatus(book);
 
     const activeView = new URLSearchParams(global.location.search).get("view") || "overview";
     activateView(book, activeView);
