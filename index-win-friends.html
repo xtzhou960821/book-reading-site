@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《人性的弱点》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="win-friends">
+    <header class="topbar reveal">
+      <nav class="nav">
+<div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">人性的弱点</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index-win-friends.html">概览</a>
+          <a class="nav-link" href="index-win-friends.html#import-hub">导入中心</a>
+          <a class="nav-link" href="human-relations.html">人际处世</a>
+          <a class="nav-link" href="likeability.html">受人欢迎</a>
+          <a class="nav-link" href="agreement.html">赢得认同</a>
+          <a class="nav-link" href="leadership.html">成为领袖</a>
+          <a class="nav-link" href="happy-home.html">幸福家庭</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《人性的弱点》</div>
+      <p>戴尔·卡耐基的经典人际交往著作，围绕「如何赢得朋友并影响他人」提出一系列可操作的处世原则，从个人修养到影响他人、领导他人、经营幸福家庭，形成一套完整的人脉与影响力方法论。</p>
+      <div class="badges">
+        <span class="badge">结构化阅读</span>
+        <span class="badge">概念图表</span>
+        <span class="badge">How to Win Friends and Influence People</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>方式 C：输入书名生成新模板</h3>
+        <form class="import-form" data-title-import-form>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="book_title" placeholder="例如：思考，快与慢" required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="book_subtitle" placeholder="不填则使用默认备注" />
+          </label>
+          <button class="primary-btn" type="submit">生成新书模板</button>
+        </form>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以从网址、PDF 或书名创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>从下方选择已解析的 PDF/网页</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-content-picker-empty>还没有可关联的解析内容：先在上方「通用书籍导入入口」导入 PDF 或网址，即可把解析出的真实文本、章节、关键词与统计展示在本页。</p>
+        <div class="kw-chips" data-content-picker></div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键节点速读</h2>
+        <span class="section-meta">全书的几条主线</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="3" data-suffix="条">0</strong>
+          <span>人际处世：不批评、真诚赞赏、激发渴望</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="6" data-suffix="条">0</strong>
+          <span>受人欢迎：微笑、倾听、记住名字等</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="2" data-suffix="倍">0</strong>
+          <span>赢得认同：避免争论、先认错、让他说「是」</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">从自我修养到影响他人、领导与家庭</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title">
+            <span>影响力扩散的同心圆</span>
+          </div>
+          <svg viewBox="0 0 260 260" width="100%" height="220" aria-label="结构地图">
+            <defs>
+              <linearGradient id="ringA" x1="0" x2="1">
+                <stop offset="0%" stop-color="#3ecf9d" />
+                <stop offset="100%" stop-color="#8fe8c4" />
+              </linearGradient>
+              <linearGradient id="ringB" x1="0" x2="1">
+                <stop offset="0%" stop-color="#2aa07c" />
+                <stop offset="100%" stop-color="#6f84a8" />
+              </linearGradient>
+            </defs>
+            <circle cx="130" cy="130" r="80" stroke="rgba(255,255,255,0.12)" stroke-width="22" fill="none" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ringA)" stroke-width="22" fill="none" stroke-dasharray="180 380" transform="rotate(-90 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ringB)" stroke-width="22" fill="none" stroke-dasharray="120 380" transform="rotate(40 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="#c9d4e6" stroke-width="22" fill="none" stroke-dasharray="80 380" transform="rotate(140 130 130)" />
+            <text x="130" y="130" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="rgba(245,247,255,0.9)">人际处世</text>
+            <text x="55" y="45" font-size="10" fill="rgba(245,247,255,0.7)">受人欢迎</text>
+            <text x="190" y="60" font-size="10" fill="rgba(245,247,255,0.7)">赢得认同</text>
+            <text x="190" y="200" font-size="10" fill="rgba(245,247,255,0.7)">领导家庭</text>
+          </svg>
+          <p class="note">以同心圆显示影响力如何从自我原则扩散到他人、团队与家庭。</p>
+        </div>
+        <div class="card reveal">
+          <h3>宏观视角的四条主线</h3>
+          <p>全书不是技巧罗列，而是从「尊重人性」出发的处世哲学。</p>
+          <div class="matrix">
+            <div class="pill">人际处世 → 尊重与赞赏</div>
+            <div class="pill">受人欢迎 → 真诚关注他人</div>
+            <div class="pill">赢得认同 → 合作而非对抗</div>
+            <div class="pill">领导家庭 → 激发与包容</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>核心观点速览</h2>
+        <span class="section-meta">书中高频命题</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>人不愿被批评</h3>
+          <p>批评常常激起辩解与怨恨，而非改变。真正的改变来自尊重与理解。</p>
+        </div>
+        <div class="card reveal">
+          <h3>赞赏是稀缺的礼物</h3>
+          <p>真诚的肯定与具体的赞美，能满足人最深层的「被重视」渴望。</p>
+        </div>
+        <div class="card reveal">
+          <h3>让他人自己说服自己</h3>
+          <p>与其强行说服，不如引导对方说出「是」，让认同水到渠成。</p>
+        </div>
+        <div class="card reveal">
+          <h3>领导是激发而非命令</h3>
+          <p>好的领导者让人乐于做事、并渴望把事情做对，靠的是激励与信任。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>指标切换：影响力视角</h2>
+        <span class="section-meta">概念指数示意</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="impact" data-chart="impact">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">赞赏力量</button>
+          <button class="tab-button" data-tab="wellbeing">倾听价值</button>
+          <button class="tab-button" data-tab="ecology">合作效果</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>赞赏力量指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>90</div>
+            <div class="bar-vertical"><span data-tip="真诚赞赏 · 90" style="height: 90%; background: #3ecf9d;"></span></div>
+            <div class="bar-caption">真诚赞赏</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>78</div>
+            <div class="bar-vertical"><span data-tip="激发渴望 · 78" style="height: 78%; background: #8fe8c4;"></span></div>
+            <div class="bar-caption">激发渴望</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>65</div>
+            <div class="bar-vertical"><span data-tip="避免批评 · 65" style="height: 65%; background: #2aa07c;"></span></div>
+            <div class="bar-caption">避免批评</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>52</div>
+            <div class="bar-vertical"><span data-tip="直接命令 · 52" style="height: 52%; background: #6f84a8;"></span></div>
+            <div class="bar-caption">直接命令</div>
+          </div>
+        </div>
+        <p class="note">示意：赞赏比命令更能赢得合作。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>数据化摘要</h2>
+        <span class="section-meta">概念指数面板</span>
+      </div>
+      <div class="grid-4">
+        <div class="stat reveal">
+          <strong>88</strong>
+          <span>真诚度指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>82</strong>
+          <span>同理心指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>86</strong>
+          <span>影响力转化</span>
+        </div>
+        <div class="stat reveal">
+          <strong>79</strong>
+          <span>关系健康度</span>
+        </div>
+      </div>
+      <p class="note">所有数字为「概念指标」，用于表达相对趋势。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="human-relations.html">
+          <h3>人际处世</h3>
+          <span>不批评、真诚赞赏、激发渴望</span>
+        </a>
+        <a class="nav-card reveal" href="likeability.html">
+          <h3>受人欢迎</h3>
+          <span>真诚关注、微笑、倾听、记住名字</span>
+        </a>
+        <a class="nav-card reveal" href="agreement.html">
+          <h3>赢得认同</h3>
+          <span>避免争论、先认错、让他说是</span>
+        </a>
+        <a class="nav-card reveal" href="leadership.html">
+          <h3>成为领袖</h3>
+          <span>赞赏进步、间接纠正、激发善意</span>
+        </a>
+        <a class="nav-card reveal" href="happy-home.html">
+          <h3>幸福家庭</h3>
+          <span>家庭中的尊重、肯定与温柔</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card reveal">
+        <p class="quote">“影响他人唯一的方法，是谈论他所想要的，并告诉他如何得到它。”</p>
+        <p class="note">页面图表为概念示意，聚焦结构性理解。</p>
+      </div>
+    </section>
+
+    <div class="footer">建议从「人际处世」开始浏览。此页面为《人性的弱点》视觉导览。</div>
+  </main>
+  <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>

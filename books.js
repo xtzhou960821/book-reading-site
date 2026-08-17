@@ -74,6 +74,21 @@ const BOOKS = {
       { label: '决策与生活', href: 'decisions.html' },
     ],
   },
+  'win-friends': {
+    id: 'win-friends',
+    title: '人性的弱点',
+    subtitle: 'How to Win Friends and Influence People',
+    indexUrl: 'index-win-friends.html',
+    pages: [
+      { label: '概览', href: 'index-win-friends.html' },
+      { label: '导入中心', href: 'index-win-friends.html#import-hub' },
+      { label: '人际处世', href: 'human-relations.html' },
+      { label: '受人欢迎', href: 'likeability.html' },
+      { label: '赢得认同', href: 'agreement.html' },
+      { label: '成为领袖', href: 'leadership.html' },
+      { label: '幸福家庭', href: 'happy-home.html' },
+    ],
+  },
 };
 
 /**
@@ -104,6 +119,9 @@ function getCurrentBookId(pathname) {
   }
   if (path === 'index-thinking-fast-slow.html' || path === 'system12.html' || path === 'heuristics.html' || path === 'prospect.html' || path === 'memory.html' || path === 'decisions.html') {
     return 'thinking-fast-slow';
+  }
+  if (path === 'index-win-friends.html' || path === 'human-relations.html' || path === 'likeability.html' || path === 'agreement.html' || path === 'leadership.html' || path === 'happy-home.html') {
+    return 'win-friends';
   }
   return 'sapiens';
 }
