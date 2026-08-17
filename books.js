@@ -64,18 +64,3 @@ function getCurrentBookId(pathname) {
   }
   return 'sapiens';
 }
-
-/**
- * 获取当前书籍的导航链接（用于其他页面）
- * @param {string} bookId - 书籍 ID
- * @param {string} currentPage - 当前页面标识
- * @returns {Array<{label: string, href: string, active?: boolean}>}
- */
-function getNavLinks(bookId, currentPage) {
-  const book = BOOKS[bookId];
-  if (!book) return [];
-  return book.pages.map((p) => ({
-    ...p,
-    active: p.href === currentPage || (currentPage && p.href.startsWith(currentPage)),
-  }));
-}

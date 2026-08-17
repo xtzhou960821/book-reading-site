@@ -692,9 +692,14 @@ function initChapterNavigation() {
   const modeButtons = Array.from(nav.querySelectorAll("[data-complete-mode]"));
   const speedSelect = nav.querySelector("[data-reading-speed]");
 
+  // 按书籍隔离偏好，避免不同书共用同一份进度设置
+  const bookId =
+    typeof getCurrentBookId === "function"
+      ? getCurrentBookId(window.location.pathname)
+      : "sapiens";
   const storageKeys = {
-    completionMode: "sapiens:chapter:completion-mode",
-    readingSpeed: "sapiens:chapter:reading-speed",
+    completionMode: `${bookId}:chapter:completion-mode`,
+    readingSpeed: `${bookId}:chapter:reading-speed`,
   };
 
   let completionMode = "top";
