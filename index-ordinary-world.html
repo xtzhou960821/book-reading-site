@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《平凡的世界》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="ordinary-world">
+    <header class="topbar reveal">
+      <nav class="nav">
+<div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">平凡的世界</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index-ordinary-world.html">概览</a>
+          <a class="nav-link" href="index-ordinary-world.html#import-hub">导入中心</a>
+          <a class="nav-link" href="characters.html">人物谱系</a>
+          <a class="nav-link" href="brothers.html">兄弟双线</a>
+          <a class="nav-link" href="era.html">时代变迁</a>
+          <a class="nav-link" href="struggle.html">奋斗与抉择</a>
+          <a class="nav-link" href="love.html">爱情与婚姻</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《平凡的世界》</div>
+      <p>路遥全景式描绘中国 <strong>1975—1985</strong> 十年间城乡社会变迁的鸿篇巨制。以陕北双水村孙少安、孙少平兄弟的奋斗轨迹为双线，书写普通人在时代洪流中如何保有尊严、怀抱理想，在一日三餐的烟火里活出生命的重量。本书荣获第三届茅盾文学奖。</p>
+      <div class="badges">
+        <span class="badge">茅盾文学奖</span>
+        <span class="badge">兄弟双线叙事</span>
+        <span class="badge">城乡十年变迁</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>方式 C：输入书名生成新模板</h3>
+        <form class="import-form" data-title-import-form>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="book_title" placeholder="例如：思考，快与慢" required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="book_subtitle" placeholder="不填则使用默认备注" />
+          </label>
+          <button class="primary-btn" type="submit">生成新书模板</button>
+        </form>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以从网址、PDF 或书名创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>从下方选择已解析的 PDF/网页</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-content-picker-empty>还没有可关联的解析内容：先在上方「通用书籍导入入口」导入 PDF 或网址，即可把解析出的真实文本、章节、关键词与统计展示在本页。</p>
+        <div class="kw-chips" data-content-picker></div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键节点速读</h2>
+        <span class="section-meta">全书的三条主线</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="2" data-suffix="线">0</strong>
+          <span>兄弟双线：少安扎根乡土，少平走向城市与煤矿</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="3" data-suffix="部">0</strong>
+          <span>三卷本结构：1975—1985 十年农村改革长卷</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="1" data-suffix="字">0</strong>
+          <span>核心命题：在平凡生活中保有人的尊严与理想</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">十年间的城乡双线演进</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title">
+            <span>兄弟双线的平行与交织</span>
+          </div>
+          <svg viewBox="0 0 320 200" width="100%" height="200" aria-label="结构地图">
+            <defs>
+              <linearGradient id="lineA" x1="0" x2="1">
+                <stop offset="0%" stop-color="#3ecf9d" />
+                <stop offset="100%" stop-color="#8fe8c4" />
+              </linearGradient>
+              <linearGradient id="lineB" x1="0" x2="1">
+                <stop offset="0%" stop-color="#7ad3ff" />
+                <stop offset="100%" stop-color="#c9d4e6" />
+              </linearGradient>
+            </defs>
+            <line x1="20" y1="150" x2="300" y2="150" stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-dasharray="4 5" />
+            <path class="draw-path" d="M20 60 L80 72 L140 110 L200 120 L260 90 L300 78" fill="none" stroke="url(#lineA)" stroke-width="3" />
+            <path class="draw-path" d="M20 160 L80 150 L140 170 L200 140 L260 120 L300 132" fill="none" stroke="url(#lineB)" stroke-width="3" />
+            <text x="20" y="44" font-size="10" fill="#8fe8c4">孙少平 · 进城 · 煤矿</text>
+            <text x="20" y="186" font-size="10" fill="#7ad3ff">孙少安 · 乡土 · 砖窑</text>
+            <text x="300" y="52" text-anchor="end" font-size="9" fill="rgba(245,247,255,0.6)">1985</text>
+            <text x="20" y="20" font-size="9" fill="rgba(245,247,255,0.6)">1975</text>
+          </svg>
+          <p class="note">两条几乎平行的奋斗线：少安固守土地创业，少平出走世界闯荡，最终殊途同归于「平凡中的尊严」。</p>
+        </div>
+        <div class="card reveal">
+          <h3>三部曲的时间骨架</h3>
+          <p>全书按年份推进，以制度变革为界：集体化尾声 → 包产到户 → 改革开放。</p>
+          <div class="flow">
+            <div class="flow-item">第一部 · 1975—78</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item">第二部 · 1979—80</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item">第三部 · 1981—85</div>
+          </div>
+          <div class="matrix">
+            <div class="pill">生产队 → 责任制</div>
+            <div class="pill">穷山村 → 砖厂富户</div>
+            <div class="pill">农家子 → 煤矿工人</div>
+            <div class="pill">包办婚姻 → 自由恋爱</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>核心观点速览</h2>
+        <span class="section-meta">路遥笔下的高频命题</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>平凡并不等于平庸</h3>
+          <p>伟大生于平凡。挖煤、种地、烧砖的普通人，也可以在日复一日的劳动里活出精神的丰盈。</p>
+        </div>
+        <div class="card reveal">
+          <h3>奋斗是尊严的载体</h3>
+          <p>少安、少平都不甘于现状，用双手挣来的生活，即便清贫也透着骨气。</p>
+        </div>
+        <div class="card reveal">
+          <h3>时代改变命运</h3>
+          <p>个人的努力只有在制度改革放开空间时才真正开花结果，十年改革是人物命运的底层土壤。</p>
+        </div>
+        <div class="card reveal">
+          <h3>爱情向现实低头又挣扎</h3>
+          <p>润叶与少安因门第错过，晓霞与少平因理想相恋——爱情在城乡裂痕中或成全、或遗憾。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>指标切换：十年变迁视角</h2>
+        <span class="section-meta">概念指数示意</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="era" data-chart="era">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">生活改善</button>
+          <button class="tab-button" data-tab="wellbeing">思想解放</button>
+          <button class="tab-button" data-tab="ecology">城乡流动</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>生活改善指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>45</div>
+            <div class="bar-vertical"><span data-tip="1975 集体化 · 45" style="height: 45%; background: #6f84a8;"></span></div>
+            <div class="bar-caption">1975 集体化</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>62</div>
+            <div class="bar-vertical"><span data-tip="1978 起步 · 62" style="height: 62%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">1978 起步</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>80</div>
+            <div class="bar-vertical"><span data-tip="1980 责任制 · 80" style="height: 80%; background: #8fe8c4;"></span></div>
+            <div class="bar-caption">1980 责任制</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>92</div>
+            <div class="bar-vertical"><span data-tip="1985 改革开放 · 92" style="height: 92%; background: #3ecf9d;"></span></div>
+            <div class="bar-caption">1985 开放</div>
+          </div>
+        </div>
+        <p class="note">示意：随制度放开，普通农民的生活与选择空间逐步打开。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>数据化摘要</h2>
+        <span class="section-meta">概念指数面板</span>
+      </div>
+      <div class="grid-4">
+        <div class="stat reveal">
+          <strong>94</strong>
+          <span>奋斗精神指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>88</strong>
+          <span>土地情结指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>76</strong>
+          <span>城乡流动指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>68</strong>
+          <span>爱情遗憾指数</span>
+        </div>
+      </div>
+      <p class="note">所有数字为「概念指标」，用于表达相对趋势。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="characters.html">
+          <h3>人物谱系</h3>
+          <span>孙家兄弟、田氏父女、贺秀莲等核心人物关系网</span>
+        </a>
+        <a class="nav-card reveal" href="brothers.html">
+          <h3>兄弟双线</h3>
+          <span>少安的乡土线 × 少平的进城线，两条奋斗轨迹</span>
+        </a>
+        <a class="nav-card reveal" href="era.html">
+          <h3>时代变迁</h3>
+          <span>1975—1985 制度变革如何改写普通人的命运</span>
+        </a>
+        <a class="nav-card reveal" href="struggle.html">
+          <h3>奋斗与抉择</h3>
+          <span>平凡中的理想、劳动与尊严、人生岔路口</span>
+        </a>
+        <a class="nav-card reveal" href="love.html">
+          <h3>爱情与婚姻</h3>
+          <span>润叶×少安、晓霞×少平：城乡夹缝里的情感</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card reveal">
+        <p class="quote">“生活不能等待别人来安排，要自己去争取和奋斗；而不论其结果是喜是悲，但可以慰藉的是，你总不枉在这世界上活了一场。”</p>
+        <p class="note">页面图表为概念示意，聚焦结构性理解。</p>
+      </div>
+    </section>
+
+    <div class="footer">建议从「人物谱系」开始浏览。此页面为《平凡的世界》视觉导览。</div>
+  </main>
+  <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>

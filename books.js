@@ -89,6 +89,21 @@ const BOOKS = {
       { label: '幸福家庭', href: 'happy-home.html' },
     ],
   },
+  'ordinary-world': {
+    id: 'ordinary-world',
+    title: '平凡的世界',
+    subtitle: '路遥 · 茅盾文学奖获奖作品',
+    indexUrl: 'index-ordinary-world.html',
+    pages: [
+      { label: '概览', href: 'index-ordinary-world.html' },
+      { label: '导入中心', href: 'index-ordinary-world.html#import-hub' },
+      { label: '人物谱系', href: 'characters.html' },
+      { label: '兄弟双线', href: 'brothers.html' },
+      { label: '时代变迁', href: 'era.html' },
+      { label: '奋斗与抉择', href: 'struggle.html' },
+      { label: '爱情与婚姻', href: 'love.html' },
+    ],
+  },
 };
 
 /**
@@ -122,6 +137,9 @@ function getCurrentBookId(pathname) {
   }
   if (path === 'index-win-friends.html' || path === 'human-relations.html' || path === 'likeability.html' || path === 'agreement.html' || path === 'leadership.html' || path === 'happy-home.html') {
     return 'win-friends';
+  }
+  if (path === 'index-ordinary-world.html' || path === 'characters.html' || path === 'brothers.html' || path === 'era.html' || path === 'struggle.html' || path === 'love.html') {
+    return 'ordinary-world';
   }
   return 'sapiens';
 }
