@@ -4,12 +4,13 @@
 
   const urlForm = document.querySelector("[data-url-import-form]");
   const pdfForm = document.querySelector("[data-pdf-import-form]");
+  const titleForm = document.querySelector("[data-title-import-form]");
   const listRoot = document.querySelector("[data-library-list]");
   const countRoot = document.querySelector("[data-library-count]");
   const emptyRoot = document.querySelector("[data-library-empty]");
   const feedbackRoot = document.querySelector("[data-import-feedback]");
 
-  if (!urlForm || !pdfForm || !listRoot) {
+  if (!urlForm || !pdfForm || !titleForm || !listRoot) {
     return;
   }
 
@@ -125,6 +126,13 @@
     );
   }
 
+  function sourceNameOf(type) {
+    if (type === "url") return "网址";
+    if (type === "pdf") return "PDF";
+    if (type === "title") return "书名";
+    return "导入";
+  }
+
   function renderLibrary() {
     const books = readLibrary();
     listRoot.innerHTML = "";
@@ -145,7 +153,7 @@
       card.className = "library-card";
       card.innerHTML =
         `<h3>${escapeHtml(book.title)}</h3>` +
-        `<p class="library-meta">来源：${book.sourceType === "url" ? "网址" : "PDF"} · 导入于 ${formatDate(
+        `<p class="library-meta">来源：${sourceNameOf(book.sourceType)} · 导入于 ${formatDate(
           book.createdAt
         )}</p>` +
         contentMetaHtml(book) +
@@ -221,6 +229,30 @@
       );
     }
     urlForm.reset();
+  });
+
+  titleForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const titleInput = titleForm.querySelector("[name='book_title']");
+    const subtitleInput = titleForm.querySelector("[name='book_subtitle']");
+    const rawTitle = titleInput?.value?.trim();
+
+    if (!rawTitle) {
+      showFeedback("请先输入书名。", "error");
+      return;
+    }
+
+    const book = {
+      id: createId(rawTitle),
+      title: rawTitle,
+      sourceType: "title",
+      sourceLabel: subtitleInput?.value?.trim() || "手动创建模板",
+      createdAt: new Date().toISOString(),
+    };
+
+    addBook(book);
+    showFeedback(`已生成《${rawTitle}》模板，可在下方库中打开模板页。`, "success");
+    titleForm.reset();
   });
 
   pdfForm.addEventListener("submit", async (event) => {

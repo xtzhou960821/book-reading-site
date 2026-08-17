@@ -92,12 +92,26 @@
         </div>
       </div>
       <div class="card reveal">
+        <h3>方式 C：输入书名生成新模板</h3>
+        <form class="import-form" data-title-import-form>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="book_title" placeholder="例如：思考，快与慢" required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="book_subtitle" placeholder="不填则使用默认备注" />
+          </label>
+          <button class="primary-btn" type="submit">生成新书模板</button>
+        </form>
+      </div>
+      <div class="card reveal">
         <div class="section-head">
           <h3>已导入书籍库</h3>
           <span class="section-meta" data-library-count>0 本</span>
         </div>
         <div class="library-list" data-library-list></div>
-        <p class="note" data-library-empty>还没有导入书籍。你可以先从网址或 PDF 创建一本。</p>
+        <p class="note" data-library-empty>还没有导入书籍。你可以从网址、PDF 或书名创建一本。</p>
       </div>
     </section>
 

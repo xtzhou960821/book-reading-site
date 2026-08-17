@@ -392,20 +392,28 @@
     }
   }
 
+  function sourceNameOf(type) {
+    if (type === "url") return "网址";
+    if (type === "pdf") return "PDF";
+    if (type === "title") return "书名";
+    return "导入";
+  }
+
   function fillBook(book) {
     if (book.content) {
       fillRealContent(book);
       return;
     }
+    const sourceName = sourceNameOf(book.sourceType);
     document.title = `${book.title} · 通用导读模板`;
     text(document.querySelector("[data-book-title]"), `《${book.title}》· 通用导读模板`);
     text(
       document.querySelector("[data-book-summary]"),
-      `该页面基于你导入的${book.sourceType === "url" ? "网址" : "PDF"}生成，沿用现有图表与结构化阅读模板，帮助你快速建立“主线-论证-争议-行动”四层理解。`
+      `该页面基于你导入的${sourceName}生成，沿用现有图表与结构化阅读模板，帮助你快速建立“主线-论证-争议-行动”四层理解。`
     );
     text(
       document.querySelector("[data-book-source]"),
-      `来源：${book.sourceType === "url" ? "网址" : "PDF"}`
+      `来源：${sourceName}`
     );
     text(document.querySelector("[data-book-source-label]"), book.sourceLabel || "-");
 
