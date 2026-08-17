@@ -50,6 +50,29 @@ node tools/add-book.js remove --id mybook
 - 添加/移除后均自动校验 `books.js` 语法
 - 工具内置检查：id 非法、id 重复、目标文件已存在（需 `--force`）都会明确报错
 
+## 关联解析内容（导入内容实时上页）
+
+生成的书页自带 `book-content-renderer.js`，与「导入中心」联动：
+
+1. 在概览页导入 PDF / 网址（真实解析，见导入中心功能）
+2. 概览页出现选择器，点击某本已解析书（仅一本时自动关联）
+3. 真实内容直接渲染到书页上：**原文摘录、章节结构、高频关键词、解析字数/页数/阅读时长、三组真实统计柱状图**
+4. 关联记忆存于 localStorage（`book-scope:linked-content:<bookId>`），**概览页选一次，全书章节页自动同步**
+
+页面钩子约定（可手工加到任意页面）：
+
+| 钩子 | 作用 |
+|------|------|
+| `data-book-id`（main 上） | 当前书 id（缺省用 `getCurrentBookId`） |
+| `data-content-block` | 区块存在才初始化渲染器 |
+| `data-content-picker` / `-picker-empty` | 内容选择器（仅需交互的页面放） |
+| `data-content-scope` | 渲染结果容器（初始 `hidden`） |
+| `data-content-excerpt` / `-note` | 摘录 / 备注 |
+| `data-content-headings` 等 | 章节结构 |
+| `data-content-keywords` | 高频关键词 chips |
+| `data-auto-stat="words\|pages\|minutes"` | 统计位 |
+| `data-content-chart` | 3-tab 柱状图（自管，不与 app.js 图表冲突） |
+
 ## 常见问题
 
 - **页面导航高亮规则**：当前页面文件与链接 href 完全相等才高亮（`index.html#import-hub` 这类锚点链接不会误高亮）

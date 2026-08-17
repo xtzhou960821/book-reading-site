@@ -11,7 +11,7 @@
   <div class="orb two"></div>
   <div class="orb three"></div>
 
-  <main class="page">
+  <main class="page" data-book-id="little-prince">
     <header class="topbar reveal">
       <nav class="nav">
 <div class="brand-area">
@@ -89,6 +89,19 @@
       </div>
     </section>
 
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>自动跟随概览页选择</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <div class="kw-chips" style="margin-top: 14px" data-content-keywords></div>
+      </div>
+      <p class="note" data-content-empty hidden>尚未关联解析内容：可在概览页「通用书籍导入入口」导入 PDF/网址并选择关联。</p>
+    </section>
+
     <div class="pager reveal">
       <a href="index-little-prince.html">← 返回概览</a>
       <a href="planets.html">星球之旅 →</a>
@@ -99,5 +112,6 @@
   <script src="./books.js"></script>
   <script src="./app.js"></script>
   <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
 </body>
 </html>

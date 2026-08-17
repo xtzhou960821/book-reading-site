@@ -122,7 +122,7 @@ function renderNav(pages, currentFile, title) {
         </div>`;
 }
 
-const PAGE_HEAD = (title) => `<!DOCTYPE html>
+const PAGE_HEAD = (title, bookId) => `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -135,7 +135,7 @@ const PAGE_HEAD = (title) => `<!DOCTYPE html>
   <div class="orb two"></div>
   <div class="orb three"></div>
 
-  <main class="page">
+  <main class="page" data-book-id="${bookId}">
     <header class="topbar reveal">
       <nav class="nav">
 `;
@@ -143,6 +143,7 @@ const PAGE_HEAD = (title) => `<!DOCTYPE html>
 const SCRIPTS_CORE = `  <script src="./books.js"></script>
   <script src="./app.js"></script>
   <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
 </body>
 </html>
 `;
@@ -153,6 +154,7 @@ const SCRIPTS_WITH_HUB = `  <script src="./books.js"></script>
   <script src="./library.js"></script>
   <script src="./app.js"></script>
   <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
 </body>
 </html>
 `;
@@ -174,7 +176,7 @@ function renderIndex(book) {
     `本书以「${esc(pages[0].label)}」为入口展开：通过结构化卡片、概念图表与章节导航，帮助你快速建立对《${esc(title)}》的完整理解。`;
 
   return (
-    PAGE_HEAD(`《${title}》视觉导览`) +
+    PAGE_HEAD(`《${title}》视觉导览`, id) +
     renderNav(pages, indexFile, title) +
     `
       </nav>
@@ -235,6 +237,81 @@ function renderIndex(book) {
         </div>
         <div class="library-list" data-library-list></div>
         <p class="note" data-library-empty>还没有导入书籍。你可以先从网址或 PDF 创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>从下方选择已解析的 PDF/网页</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-content-picker-empty>还没有可关联的解析内容：先在上方「通用书籍导入入口」导入 PDF 或网址，即可把解析出的真实文本、章节、关键词与统计展示在本页。</p>
+        <div class="kw-chips" data-content-picker></div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
       </div>
     </section>
 
@@ -308,7 +385,7 @@ function renderSubpage(book, page, prevPage, nextPage) {
     : `<a href="${book.indexFile}">查看概览 →</a>`;
 
   return (
-    PAGE_HEAD(`《${title}》${page.label}`) +
+    PAGE_HEAD(`《${title}》${page.label}`, book.id) +
     renderNav(pages, page.href.split("#")[0], title) +
     `
       </nav>
@@ -367,6 +444,18 @@ function renderSubpage(book, page, prevPage, nextPage) {
         </div>
         <p class="note">可参考 revolutions.html 等示例页替换为 SVG 图表。</p>
       </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>自动跟随概览页选择</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <div class="kw-chips" style="margin-top: 14px" data-content-keywords></div>
+      </div>
+      <p class="note" data-content-empty hidden>尚未关联解析内容：可在概览页「通用书籍导入入口」导入 PDF/网址并选择关联。</p>
     </section>
 
     <div class="pager reveal">

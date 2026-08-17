@@ -783,6 +783,18 @@ svg [data-tip]:hover {
   font-weight: 600;
 }
 
+.kw-chip.is-selected {
+  background: rgba(122, 211, 255, 0.24);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.kw-chip.is-muted {
+  opacity: 0.55;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
 [data-import-feedback][data-tone="success"] {
   color: rgba(180, 255, 178, 0.95);
 }
