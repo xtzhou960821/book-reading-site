@@ -272,7 +272,7 @@
     const span = a.parts.novelty.length
       ? Math.max(...a.parts.novelty) - Math.min(...a.parts.novelty)
       : 0;
-    const colors = ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"];
+    const colors = ["#3ecf9d", "#8fe8c4", "#2aa07c", "#6f84a8"];
     // 与 app.js 的 chartData 约定一致：外层用 "impact" 作为图表键
     return {
       impact: {
@@ -316,9 +316,9 @@
       "book-trends": {
         labels: ["起点", "展开", "深化", "整合", "延伸"],
         series: {
-          theory: { name: "平均句长", color: "#7ad3ff", values: norm01(a.parts.sentMean) },
-          method: { name: "词汇新鲜度", color: "#b4ffb2", values: a.parts.novelty.map((v) => Math.round(v)) },
-          practice: { name: "主题聚焦", color: "#ffd087", values: norm01(a.parts.focus) },
+          theory: { name: "平均句长", color: "#3ecf9d", values: norm01(a.parts.sentMean) },
+          method: { name: "词汇新鲜度", color: "#8fe8c4", values: a.parts.novelty.map((v) => Math.round(v)) },
+          practice: { name: "主题聚焦", color: "#2aa07c", values: norm01(a.parts.focus) },
         },
       },
     };

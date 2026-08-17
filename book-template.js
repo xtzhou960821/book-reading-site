@@ -166,19 +166,19 @@
           label: "结构清晰度指数（0-100）",
           note: "示意：章节组织与主线清晰度。",
           values: valuesA,
-          colors: ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"],
+          colors: ["#3ecf9d", "#8fe8c4", "#2aa07c", "#6f84a8"],
         },
         wellbeing: {
           label: "论证严谨度指数（0-100）",
           note: "示意：证据链完整度与逻辑一致性。",
           values: valuesB,
-          colors: ["#7ad3ff", "#ffd087", "#b4ffb2", "#a6a8ff"],
+          colors: ["#3ecf9d", "#2aa07c", "#8fe8c4", "#c9d4e6"],
         },
         ecology: {
           label: "现实关联度指数（0-100）",
           note: "示意：观点映射现实问题的能力。",
           values: valuesC,
-          colors: ["#b4ffb2", "#ffd087", "#ff8ec7", "#7ad3ff"],
+          colors: ["#8fe8c4", "#2aa07c", "#6f84a8", "#3ecf9d"],
         },
       },
     };
@@ -189,7 +189,7 @@
         series: {
           theory: {
             name: "理论密度",
-            color: "#7ad3ff",
+            color: "#3ecf9d",
             values: [
               randomInRange(rng, 28, 42),
               randomInRange(rng, 40, 58),
@@ -200,7 +200,7 @@
           },
           method: {
             name: "方法可用性",
-            color: "#b4ffb2",
+            color: "#8fe8c4",
             values: [
               randomInRange(rng, 22, 36),
               randomInRange(rng, 34, 50),
@@ -211,7 +211,7 @@
           },
           practice: {
             name: "实践转化",
-            color: "#ffd087",
+            color: "#2aa07c",
             values: [
               randomInRange(rng, 16, 28),
               randomInRange(rng, 24, 40),

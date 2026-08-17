@@ -147,19 +147,19 @@ const defaultChartData = {
       label: "人口规模指数（0-100）",
       note: "示意：农业与科学革命推动人口快速攀升。",
       values: [28, 68, 92, 100],
-      colors: ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"],
+      colors: ["#3ecf9d", "#8fe8c4", "#2aa07c", "#6f84a8"],
     },
     wellbeing: {
       label: "个体生活质量指数（0-100）",
       note: "示意：生活质量并非线性提升。",
       values: [60, 45, 55, 70],
-      colors: ["#7ad3ff", "#ffd087", "#b4ffb2", "#a6a8ff"],
+      colors: ["#3ecf9d", "#2aa07c", "#8fe8c4", "#c9d4e6"],
     },
     ecology: {
       label: "生态压力指数（0-100）",
       note: "示意：工业化与数字化带来更高的生态压力。",
       values: [18, 46, 78, 90],
-      colors: ["#b4ffb2", "#ffd087", "#ff8ec7", "#7ad3ff"],
+      colors: ["#8fe8c4", "#2aa07c", "#6f84a8", "#3ecf9d"],
     },
   },
 };
@@ -175,17 +175,17 @@ const defaultLineChartData = {
     series: {
       ai: {
         name: "AI",
-        color: "#7ad3ff",
+        color: "#3ecf9d",
         values: [32, 49, 64, 79, 95],
       },
       bio: {
         name: "Bio",
-        color: "#b4ffb2",
+        color: "#8fe8c4",
         values: [24, 38, 52, 66, 78],
       },
       data: {
         name: "Data",
-        color: "#ffd087",
+        color: "#2aa07c",
         values: [20, 31, 43, 57, 69],
       },
     },
