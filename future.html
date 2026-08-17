@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《人类简史》未来议题</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">人类简史</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden>
+              <li role="option" data-book="sapiens" aria-selected="true"><a href="index.html">人类简史 · Sapiens</a></li>
+              <li role="option" data-book="100years" aria-selected="false"><a href="index-100years.html">百年孤独 · Cien años de soledad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="index.html">概览</a>
+          <a class="nav-link" href="index.html#import-hub">导入中心</a>
+          <a class="nav-link" href="revolutions.html">三次革命</a>
+          <a class="nav-link" href="orders.html">想象秩序</a>
+          <a class="nav-link active" href="future.html">未来议题</a>
+          <a class="nav-link" href="controversy.html">争议</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">未来议题：后人类的边界</div>
+      <p>
+        科学革命之后，人类开始设计自己。生物工程、人工智能与数据主义，
+        让“人是什么”成为最关键的问题。
+      </p>
+      <div class="badges">
+        <span class="badge">后人类</span>
+        <span class="badge">数据主义</span>
+        <span class="badge">伦理抉择</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>后人类三角</h2>
+        <span class="section-meta">三大驱动互相牵引</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <svg viewBox="0 0 280 240" width="100%" height="220" aria-label="后人类三角">
+            <polygon points="140,20 250,200 30,200" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.25)" />
+            <path class="draw-path" d="M140 20 L250 200 L30 200 Z" fill="none" stroke="#7ad3ff" stroke-width="2" />
+            <circle cx="140" cy="20" r="10" fill="rgba(122,211,255,0.9)" class="pulse" data-tip="人工智能驱动" />
+            <circle cx="250" cy="200" r="10" fill="rgba(255,208,135,0.9)" class="pulse" data-tip="数据主义驱动" />
+            <circle cx="30" cy="200" r="10" fill="rgba(180,255,178,0.9)" class="pulse" data-tip="生物工程驱动" />
+            <text x="140" y="14" text-anchor="middle" font-size="10" fill="rgba(245,247,255,0.8)">人工智能</text>
+            <text x="252" y="220" text-anchor="middle" font-size="10" fill="rgba(245,247,255,0.8)">数据主义</text>
+            <text x="30" y="220" text-anchor="middle" font-size="10" fill="rgba(245,247,255,0.8)">生物工程</text>
+          </svg>
+          <p class="note">三角关系揭示“能力—控制—意义”的新张力。</p>
+        </div>
+        <div class="card reveal">
+          <h3>未来不只是技术问题</h3>
+          <p>赫拉利强调：技术扩张带来新力量，但真正的问题是价值排序与伦理选择。</p>
+          <div class="matrix">
+            <div class="pill">效率 vs 幸福</div>
+            <div class="pill">自由 vs 安全</div>
+            <div class="pill">人类 vs 其他物种</div>
+            <div class="pill">数据所有权</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>伦理矩阵</h2>
+        <span class="section-meta">价值冲突的四象限</span>
+      </div>
+      <div class="card reveal">
+        <div class="matrix-quad">
+          <div class="quad">
+            <strong>自由 + 效率</strong>
+            去中心化创新
+          </div>
+          <div class="quad">
+            <strong>安全 + 效率</strong>
+            数据监管社会
+          </div>
+          <div class="quad">
+            <strong>自由 + 幸福</strong>
+            人本主义优先
+          </div>
+          <div class="quad">
+            <strong>安全 + 幸福</strong>
+            福利国家升级
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>情景切换</h2>
+        <span class="section-meta">不同视角下的未来叙事</span>
+      </div>
+      <div class="card reveal" data-tab-group="scenario">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="optimistic">乐观叙事</button>
+          <button class="tab-button" data-tab="cautious">谨慎叙事</button>
+          <button class="tab-button" data-tab="critical">警示叙事</button>
+        </div>
+        <div class="panel active" data-panel="optimistic">
+          <ul>
+            <li>技术提升医疗与教育可达性。</li>
+            <li>数据推动公共决策更高效。</li>
+            <li>协作网络更开放，创新门槛降低。</li>
+          </ul>
+        </div>
+        <div class="panel" data-panel="cautious">
+          <ul>
+            <li>效率提高但就业结构需重塑。</li>
+            <li>算法治理需避免黑箱化。</li>
+            <li>全球协作面临监管差异。</li>
+          </ul>
+        </div>
+        <div class="panel" data-panel="critical">
+          <ul>
+            <li>数据垄断可能形成新阶层。</li>
+            <li>生物工程带来伦理与身份分裂。</li>
+            <li>生态压力成为长期红线。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>未来路径示意</h2>
+        <span class="section-meta">可点击图例显隐 + 自动重算纵轴</span>
+      </div>
+      <div class="card chart-animate reveal" data-line-chart-key="future-trends">
+        <div class="line-legend">
+          <button class="legend-toggle active" type="button" data-series="ai">
+            <i style="background:#7ad3ff"></i>AI
+          </button>
+          <button class="legend-toggle active" type="button" data-series="bio">
+            <i style="background:#b4ffb2"></i>Bio
+          </button>
+          <button class="legend-toggle active" type="button" data-series="data">
+            <i style="background:#ffd087"></i>Data
+          </button>
+        </div>
+        <svg class="line-canvas" viewBox="0 0 620 240" aria-label="未来趋势交互图">
+          <g class="line-grid" data-line-grid></g>
+          <g class="line-axis" data-line-axis></g>
+        </svg>
+        <p class="note">点击图例可显隐系列；图表会根据可见系列平滑重算坐标。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键问题清单</h2>
+        <span class="section-meta">留给读者的思考</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>我们是谁？</h3>
+          <p>当记忆、情绪与认知可以被改写，“人”的定义会不会改变？</p>
+        </div>
+        <div class="card reveal">
+          <h3>我们能被什么所控制？</h3>
+          <p>算法推荐与数据垄断是否会构成新的“想象秩序”？</p>
+        </div>
+        <div class="card reveal">
+          <h3>我们如何分配价值？</h3>
+          <p>当机器取代人类劳动，财富、尊严与意义如何重新分配？</p>
+        </div>
+        <div class="card reveal">
+          <h3>我们如何对待非人类？</h3>
+          <p>生态伦理不再是附属问题，而是文明持续性的核心。</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pager reveal">
+      <a href="orders.html">← 返回想象秩序</a>
+      <a href="controversy.html">下一页：争议 →</a>
+    </div>
+
+    <div class="footer">未来议题强调“选择”，而不是单向进步。</div>
+  </main>
+
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+</body>
+</html>

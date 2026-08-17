@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《百年孤独》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">百年孤独</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden>
+              <li role="option" data-book="sapiens" aria-selected="false"><a href="index.html">人类简史 · Sapiens</a></li>
+              <li role="option" data-book="100years" aria-selected="true"><a href="index-100years.html">百年孤独 · Cien años de soledad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index-100years.html">概览</a>
+          <a class="nav-link" href="index-100years.html#import-hub">导入中心</a>
+          <a class="nav-link" href="family.html">布恩迪亚家族</a>
+          <a class="nav-link" href="magic-realism.html">魔幻现实主义</a>
+          <a class="nav-link" href="cycles.html">循环与宿命</a>
+          <a class="nav-link" href="solitude.html">孤独主题</a>
+          <a class="nav-link" href="controversy-100years.html">争议与解读</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《百年孤独》</div>
+      <p>
+        加西亚·马尔克斯的史诗巨作，讲述<strong>布恩迪亚家族</strong>七代人在马孔多的兴衰史。
+        <strong>魔幻现实主义</strong>将现实与幻想交织，<strong>循环与宿命</strong>贯穿始终，
+        <strong>孤独</strong>成为家族与文明的终极隐喻。
+      </p>
+      <div class="badges">
+        <span class="badge">魔幻现实主义</span>
+        <span class="badge">家族史诗</span>
+        <span class="badge">循环宿命</span>
+        <span class="badge">孤独隐喻</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以先从网址或 PDF 创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键节点速读</h2>
+        <span class="section-meta">布恩迪亚家族七代人的时间跨度</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="1" data-suffix="代">0</strong>
+          <span>何塞·阿尔卡蒂奥建立马孔多</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="4" data-suffix="代">0</strong>
+          <span>香蕉公司与繁荣巅峰</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="7" data-suffix="代">0</strong>
+          <span>家族终结与飓风抹去</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">家族 · 魔幻 · 循环 · 孤独</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title">
+            <span>叙事环</span>
+          </div>
+          <svg viewBox="0 0 260 260" width="100%" height="220" aria-label="结构地图">
+            <defs>
+              <linearGradient id="ring100A" x1="0" x2="1">
+                <stop offset="0%" stop-color="#7ad3ff" />
+                <stop offset="100%" stop-color="#b4ffb2" />
+              </linearGradient>
+              <linearGradient id="ring100B" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ffd087" />
+                <stop offset="100%" stop-color="#ff8ec7" />
+              </linearGradient>
+            </defs>
+            <circle cx="130" cy="130" r="80" stroke="rgba(255,255,255,0.12)" stroke-width="22" fill="none" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ring100A)" stroke-width="22" fill="none" stroke-dasharray="180 380" transform="rotate(-90 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ring100B)" stroke-width="22" fill="none" stroke-dasharray="120 380" transform="rotate(40 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="#a6a8ff" stroke-width="22" fill="none" stroke-dasharray="80 380" transform="rotate(140 130 130)" />
+            <text x="130" y="130" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="rgba(245,247,255,0.9)">孤独</text>
+            <text x="55" y="45" font-size="10" fill="rgba(245,247,255,0.7)">家族</text>
+            <text x="190" y="60" font-size="10" fill="rgba(245,247,255,0.7)">魔幻</text>
+            <text x="190" y="200" font-size="10" fill="rgba(245,247,255,0.7)">循环</text>
+          </svg>
+          <p class="note">以环形结构显示家族、魔幻、循环围绕「孤独」展开。</p>
+        </div>
+        <div class="card reveal">
+          <h3>叙事的四条主线</h3>
+          <p>全书以家族史为骨架，魔幻与现实交织，循环命名暗示宿命，孤独贯穿每一代人。</p>
+          <div class="matrix">
+            <div class="pill">家族 → 七代人 → 马孔多</div>
+            <div class="pill">魔幻 → 现实 → 超自然</div>
+            <div class="pill">命名 → 重复 → 宿命</div>
+            <div class="pill">孤独 → 隔绝 → 遗忘</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>核心观点速览</h2>
+        <span class="section-meta">书中高频命题</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>重复的命名，重复的命运</h3>
+          <p>阿尔卡蒂奥与奥雷里亚诺的循环命名，暗示家族命运的不可逃脱。</p>
+        </div>
+        <div class="card reveal">
+          <h3>魔幻即拉美现实</h3>
+          <p>黄蝴蝶、升天的美人、会说话的死者——魔幻元素根植于拉美文化土壤。</p>
+        </div>
+        <div class="card reveal">
+          <h3>孤独是文明的宿命</h3>
+          <p>从个人到家族到马孔多，孤独层层递进，最终指向文明的遗忘与终结。</p>
+        </div>
+        <div class="card reveal">
+          <h3>羊皮卷预言一切</h3>
+          <p>百年后的破译揭示：一切早已写就，历史是循环的预言。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>指标切换：叙事强度</h2>
+        <span class="section-meta">概念指数示意</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="impact100" data-chart="impact100">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="generation">代际密度</button>
+          <button class="tab-button" data-tab="magic">魔幻强度</button>
+          <button class="tab-button" data-tab="solitude">孤独指数</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>代际密度指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>35</div>
+            <div class="bar-vertical"><span data-tip="第一二代 · 35" style="height: 35%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">第一二代</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>62</div>
+            <div class="bar-vertical"><span data-tip="第三四代 · 62" style="height: 62%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">第三四代</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>88</div>
+            <div class="bar-vertical"><span data-tip="第五六代 · 88" style="height: 88%; background: #ffd087;"></span></div>
+            <div class="bar-caption">第五六代</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>100</div>
+            <div class="bar-vertical"><span data-tip="第七代 · 100" style="height: 100%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">第七代</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>示意：叙事密度随代际推进而升高。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>数据化摘要</h2>
+        <span class="section-meta">概念指数面板</span>
+      </div>
+      <div class="grid-4">
+        <div class="stat reveal">
+          <strong>7</strong>
+          <span>家族代数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>92</strong>
+          <span>魔幻元素密度</span>
+        </div>
+        <div class="stat reveal">
+          <strong>88</strong>
+          <span>循环命名重复度</span>
+        </div>
+        <div class="stat reveal">
+          <strong>95</strong>
+          <span>孤独主题强度</span>
+        </div>
+      </div>
+      <p class="note">所有数字为「概念指标」，用于表达相对趋势。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="family.html">
+          <h3>布恩迪亚家族</h3>
+          <span>七代人物谱系 + 命名循环 + 关键命运</span>
+        </a>
+        <a class="nav-card reveal" href="magic-realism.html">
+          <h3>魔幻现实主义</h3>
+          <span>现实与幻想交织 + 拉美文化根源</span>
+        </a>
+        <a class="nav-card reveal" href="cycles.html">
+          <h3>循环与宿命</h3>
+          <span>命名重复 + 时间循环 + 羊皮卷预言</span>
+        </a>
+        <a class="nav-card reveal" href="solitude.html">
+          <h3>孤独主题</h3>
+          <span>个人·家族·文明的孤独隐喻</span>
+        </a>
+        <a class="nav-card reveal" href="controversy-100years.html">
+          <h3>争议与解读</h3>
+          <span>文学争议 + 多元解读视角</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card reveal">
+        <p class="quote">「注定经受百年孤独的家族，不会有第二次机会在大地上出现。」</p>
+        <p class="note">页面图表为概念示意，聚焦结构性理解。</p>
+      </div>
+    </section>
+
+    <div class="footer">下一页建议从「布恩迪亚家族」开始浏览。</div>
+  </main>
+
+  <script>
+    /** 百年孤独专属图表数据，需在 app.js 之前加载 */
+    window.bookChartData = window.bookChartData || {};
+    window.bookChartData.impact100 = {
+      generation: {
+        label: "代际密度指数（0-100）",
+        note: "示意：叙事密度随代际推进而升高。",
+        values: [35, 62, 88, 100],
+        colors: ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"],
+      },
+      magic: {
+        label: "魔幻元素强度（0-100）",
+        note: "示意：魔幻与现实交织贯穿全书。",
+        values: [55, 72, 85, 92],
+        colors: ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"],
+      },
+      solitude: {
+        label: "孤独主题指数（0-100）",
+        note: "示意：孤独从个人到家族到文明层层递进。",
+        values: [48, 68, 82, 95],
+        colors: ["#7ad3ff", "#b4ffb2", "#ffd087", "#ff8ec7"],
+      },
+    };
+  </script>
+  <script src="./books.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+</body>
+</html>

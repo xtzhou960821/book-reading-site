@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《人类简史》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">人类简史</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden>
+              <li role="option" data-book="sapiens" aria-selected="true"><a href="index.html">人类简史 · Sapiens</a></li>
+              <li role="option" data-book="100years" aria-selected="false"><a href="index-100years.html">百年孤独 · Cien años de soledad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index.html">概览</a>
+          <a class="nav-link" href="index.html#import-hub">导入中心</a>
+          <a class="nav-link" href="revolutions.html">三次革命</a>
+          <a class="nav-link" href="orders.html">想象秩序</a>
+          <a class="nav-link" href="future.html">未来议题</a>
+          <a class="nav-link" href="controversy.html">争议</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《人类简史》</div>
+      <p>
+        本书用“大历史”视角回望智人崛起：<strong>认知革命</strong>让想象成为现实，
+        <strong>农业革命</strong>让人口与秩序重塑生态，<strong>科学革命</strong>则把人类推向全球化与后人类边界。
+      </p>
+      <div class="badges">
+        <span class="badge">宏观史观</span>
+        <span class="badge">想象共同体</span>
+        <span class="badge">技术与资本循环</span>
+        <span class="badge">未来伦理</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以先从网址或 PDF 创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>关键节点速读</h2>
+        <span class="section-meta">时间为书中常见概念区间（示意）</span>
+      </div>
+      <div class="grid-3">
+        <div class="stat reveal">
+          <strong data-count="7" data-suffix="万年前">0</strong>
+          <span>认知革命：语言与想象突破</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="1.2" data-decimals="1" data-suffix="万年前">0</strong>
+          <span>农业革命：定居与驯化社会</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="500" data-suffix="年前">0</strong>
+          <span>科学革命：知识驱动新秩序</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">三次革命 + 想象秩序</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title">
+            <span>宏观叙事环</span>
+          </div>
+          <svg viewBox="0 0 260 260" width="100%" height="220" aria-label="结构地图">
+            <defs>
+              <linearGradient id="ringA" x1="0" x2="1">
+                <stop offset="0%" stop-color="#7ad3ff" />
+                <stop offset="100%" stop-color="#b4ffb2" />
+              </linearGradient>
+              <linearGradient id="ringB" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ffd087" />
+                <stop offset="100%" stop-color="#ff8ec7" />
+              </linearGradient>
+            </defs>
+            <circle cx="130" cy="130" r="80" stroke="rgba(255,255,255,0.12)" stroke-width="22" fill="none" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ringA)" stroke-width="22" fill="none" stroke-dasharray="180 380" transform="rotate(-90 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="url(#ringB)" stroke-width="22" fill="none" stroke-dasharray="120 380" transform="rotate(40 130 130)" />
+            <circle class="draw-path" cx="130" cy="130" r="80" stroke="#a6a8ff" stroke-width="22" fill="none" stroke-dasharray="80 380" transform="rotate(140 130 130)" />
+            <text x="130" y="130" text-anchor="middle" dominant-baseline="middle" font-size="14" fill="rgba(245,247,255,0.9)">想象秩序</text>
+            <text x="55" y="45" font-size="10" fill="rgba(245,247,255,0.7)">认知</text>
+            <text x="190" y="60" font-size="10" fill="rgba(245,247,255,0.7)">农业</text>
+            <text x="190" y="200" font-size="10" fill="rgba(245,247,255,0.7)">科学</text>
+          </svg>
+          <p class="note">以环形结构显示三次革命围绕“想象秩序”展开。</p>
+        </div>
+        <div class="card reveal">
+          <h3>宏观视角的三条主线</h3>
+          <p>全书不是细节史，而是从物种尺度解释：想象如何驱动协作，协作如何催生秩序，秩序如何反向塑造个体。</p>
+          <div class="matrix">
+            <div class="pill">故事 → 规则 → 协作</div>
+            <div class="pill">能量 → 人口 → 城市</div>
+            <div class="pill">知识 → 资本 → 技术</div>
+            <div class="pill">全球化 → 生态影响 → 伦理问题</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>核心观点速览</h2>
+        <span class="section-meta">书中高频命题</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>虚构的故事，比基因更强大</h3>
+          <p>共享故事让陌生人快速协作，远远超出亲缘或本能的规模。</p>
+        </div>
+        <div class="card reveal">
+          <h3>农业革命是“双刃”</h3>
+          <p>它带来人口与粮食增长，同时让个体劳作更繁重、阶层更固化。</p>
+        </div>
+        <div class="card reveal">
+          <h3>资本与科学互相强化</h3>
+          <p>承认无知 → 投资探索 → 技术回报 → 形成持续增长预期。</p>
+        </div>
+        <div class="card reveal">
+          <h3>未来问题是价值选择</h3>
+          <p>AI、生物工程与数据主义让“人是什么”成为首要提问。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>指标切换：数据化视角</h2>
+        <span class="section-meta">概念指数示意</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="impact" data-chart="impact">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">人口规模</button>
+          <button class="tab-button" data-tab="wellbeing">生活质量</button>
+          <button class="tab-button" data-tab="ecology">生态压力</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>人口规模指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>28</div>
+            <div class="bar-vertical"><span data-tip="认知革命 · 28" style="height: 28%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">认知革命</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>68</div>
+            <div class="bar-vertical"><span data-tip="农业革命 · 68" style="height: 68%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">农业革命</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>92</div>
+            <div class="bar-vertical"><span data-tip="科学革命 · 92" style="height: 92%; background: #ffd087;"></span></div>
+            <div class="bar-caption">科学革命</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>100</div>
+            <div class="bar-vertical"><span data-tip="数字时代 · 100" style="height: 100%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">数字时代</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>示意：农业与科学革命推动人口快速攀升。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>数据化摘要</h2>
+        <span class="section-meta">概念指数面板</span>
+      </div>
+      <div class="grid-4">
+        <div class="stat reveal">
+          <strong>92</strong>
+          <span>协作规模指数</span>
+        </div>
+        <div class="stat reveal">
+          <strong>88</strong>
+          <span>想象秩序密度</span>
+        </div>
+        <div class="stat reveal">
+          <strong>96</strong>
+          <span>技术加速度</span>
+        </div>
+        <div class="stat reveal">
+          <strong>83</strong>
+          <span>生态压力指数</span>
+        </div>
+      </div>
+      <p class="note">所有数字为“概念指标”，用于表达相对趋势。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="revolutions.html">
+          <h3>三次革命</h3>
+          <span>时间轴 + 能量曲线 + 农业双刃图表</span>
+        </a>
+        <a class="nav-card reveal" href="orders.html">
+          <h3>想象秩序</h3>
+          <span>共同体网络 + 货币与帝国图谱</span>
+        </a>
+        <a class="nav-card reveal" href="future.html">
+          <h3>未来议题</h3>
+          <span>后人类路线图 + 伦理矩阵</span>
+        </a>
+        <a class="nav-card reveal" href="controversy.html">
+          <h3>观点争议</h3>
+          <span>争议焦点 + 观点切换 + 数据化热度</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card reveal">
+        <p class="quote">“历史不是必然的阶梯，而是不断变化的想象与选择。”</p>
+        <p class="note">页面图表为概念示意，聚焦结构性理解。</p>
+      </div>
+    </section>
+
+    <div class="footer">下一页建议从「三次革命」开始浏览。</div>
+  </main>
+
+  <script src="./books.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+</body>
+</html>

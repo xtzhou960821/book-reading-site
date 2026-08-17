@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《人类简史》想象秩序</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">人类简史</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden>
+              <li role="option" data-book="sapiens" aria-selected="true"><a href="index.html">人类简史 · Sapiens</a></li>
+              <li role="option" data-book="100years" aria-selected="false"><a href="index-100years.html">百年孤独 · Cien años de soledad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="index.html">概览</a>
+          <a class="nav-link" href="index.html#import-hub">导入中心</a>
+          <a class="nav-link" href="revolutions.html">三次革命</a>
+          <a class="nav-link active" href="orders.html">想象秩序</a>
+          <a class="nav-link" href="future.html">未来议题</a>
+          <a class="nav-link" href="controversy.html">争议</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">想象秩序：让陌生人协作</div>
+      <p>
+        货币、宗教、帝国、国家与公司都是想象秩序的产物。
+        人类相信它们，于是能在大规模协作中行动。
+      </p>
+      <div class="badges">
+        <span class="badge">故事与符号</span>
+        <span class="badge">制度与信任</span>
+        <span class="badge">文化身份</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>共同想象网络</h2>
+        <span class="section-meta">概念图示：信念连接协作</span>
+      </div>
+      <div class="card chart-animate reveal">
+        <svg viewBox="0 0 620 240" width="100%" height="240" aria-label="共同想象网络">
+          <defs>
+            <linearGradient id="netGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#7ad3ff" />
+              <stop offset="100%" stop-color="#ff8ec7" />
+            </linearGradient>
+          </defs>
+          <path class="draw-path" d="M80 120 L200 60 L320 120 L440 70 L540 120" stroke="url(#netGrad)" stroke-width="2" fill="none" />
+          <path class="draw-path" d="M80 120 L200 180 L320 120 L440 170 L540 120" stroke="url(#netGrad)" stroke-width="2" fill="none" />
+          <circle cx="80" cy="120" r="14" fill="rgba(122,211,255,0.8)" class="pulse" data-tip="故事/神话" />
+          <circle cx="200" cy="60" r="10" fill="rgba(180,255,178,0.8)" data-tip="宗教/符号" />
+          <circle cx="200" cy="180" r="10" fill="rgba(255,208,135,0.8)" data-tip="法律/制度" />
+          <circle cx="320" cy="120" r="16" fill="rgba(255,142,199,0.8)" class="pulse" data-tip="秩序核心" />
+          <circle cx="440" cy="70" r="10" fill="rgba(122,211,255,0.8)" data-tip="帝国/文化" />
+          <circle cx="440" cy="170" r="10" fill="rgba(180,255,178,0.8)" data-tip="市场/货币" />
+          <circle cx="540" cy="120" r="14" fill="rgba(255,208,135,0.8)" class="pulse" data-tip="协作网络" />
+          <text x="70" y="150" font-size="10" fill="rgba(245,247,255,0.75)">故事</text>
+          <text x="300" y="150" font-size="10" fill="rgba(245,247,255,0.75)">秩序</text>
+          <text x="520" y="150" font-size="10" fill="rgba(245,247,255,0.75)">协作</text>
+        </svg>
+        <p class="note">共同想象将陌生人连接为可扩展的信任网络。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>想象秩序的支柱</h2>
+        <span class="section-meta">货币、宗教、帝国、法律</span>
+      </div>
+      <div class="grid-2">
+        <div class="card chart-animate reveal">
+          <div class="chart-title">
+            <span>信任系统占比示意</span>
+          </div>
+          <svg viewBox="0 0 200 200" width="100%" height="200" aria-label="信任系统占比">
+            <circle cx="100" cy="100" r="70" stroke="rgba(255,255,255,0.12)" stroke-width="24" fill="none" />
+            <circle class="draw-path" cx="100" cy="100" r="70" stroke="#7ad3ff" stroke-width="24" fill="none" stroke-dasharray="140 300" transform="rotate(-90 100 100)" />
+            <circle class="draw-path" cx="100" cy="100" r="70" stroke="#b4ffb2" stroke-width="24" fill="none" stroke-dasharray="90 300" transform="rotate(20 100 100)" />
+            <circle class="draw-path" cx="100" cy="100" r="70" stroke="#ffd087" stroke-width="24" fill="none" stroke-dasharray="70 300" transform="rotate(110 100 100)" />
+            <circle class="draw-path" cx="100" cy="100" r="70" stroke="#ff8ec7" stroke-width="24" fill="none" stroke-dasharray="50 300" transform="rotate(170 100 100)" />
+            <text x="100" y="105" text-anchor="middle" font-size="14" fill="rgba(245,247,255,0.9)">想象秩序</text>
+          </svg>
+          <div class="legend">
+            <span><i class="dot" style="background:#7ad3ff"></i>货币</span>
+            <span><i class="dot" style="background:#b4ffb2"></i>宗教</span>
+            <span><i class="dot" style="background:#ffd087"></i>帝国</span>
+            <span><i class="dot" style="background:#ff8ec7"></i>法律</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>想象秩序的功能</h3>
+          <p>它们不是“谎言”，而是共享信念：让大规模协作成为可持续系统。</p>
+          <div class="matrix">
+            <div class="pill">货币：抽象信任协议</div>
+            <div class="pill">宗教：规范与意义感</div>
+            <div class="pill">帝国：统一文化与秩序</div>
+            <div class="pill">法律：规则与边界</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>制度对比表</h2>
+        <span class="section-meta">概念指数（0-10）</span>
+      </div>
+      <div class="card reveal">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>秩序类型</th>
+              <th>扩展性</th>
+              <th>稳定性</th>
+              <th>共识成本</th>
+              <th>情感黏性</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>货币</td>
+              <td>9</td>
+              <td>7</td>
+              <td>3</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>宗教</td>
+              <td>7</td>
+              <td>8</td>
+              <td>6</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>帝国</td>
+              <td>8</td>
+              <td>6</td>
+              <td>7</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>法律</td>
+              <td>6</td>
+              <td>9</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">指数为示意，用于表达不同想象秩序的相对特征。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>共同体层级与信任梯度</h2>
+        <span class="section-meta">从亲缘到全球网络</span>
+      </div>
+      <div class="card chart-animate reveal">
+        <div class="ladder">
+          <div class="ladder-item">
+            亲缘/部落
+            <div class="ladder-bar"><span data-tip="亲缘/部落 · 30" style="width: 30%; background: rgba(122,211,255,0.8)"></span></div>
+          </div>
+          <div class="ladder-item">
+            城邦/宗教
+            <div class="ladder-bar"><span data-tip="城邦/宗教 · 55" style="width: 55%; background: rgba(180,255,178,0.85)"></span></div>
+          </div>
+          <div class="ladder-item">
+            帝国/国家
+            <div class="ladder-bar"><span data-tip="帝国/国家 · 75" style="width: 75%; background: rgba(255,208,135,0.85)"></span></div>
+          </div>
+          <div class="ladder-item">
+            全球市场/数字秩序
+            <div class="ladder-bar"><span data-tip="全球市场/数字秩序 · 100" style="width: 100%; background: rgba(255,142,199,0.85)"></span></div>
+          </div>
+        </div>
+        <p class="note">信任越抽象、越可扩展，协作规模越大。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>制度拼图</h2>
+        <span class="section-meta">故事、符号、规则、身份</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <div class="matrix-quad">
+            <div class="quad">
+              <strong>故事</strong>
+              神话、叙事、品牌
+            </div>
+            <div class="quad">
+              <strong>符号</strong>
+              旗帜、仪式、货币
+            </div>
+            <div class="quad">
+              <strong>规则</strong>
+              法律、制度、契约
+            </div>
+            <div class="quad">
+              <strong>身份</strong>
+              民族、公司、社群
+            </div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>为什么秩序可以被重写？</h3>
+          <p>想象秩序不是自然事实，而是社会共识。它会被挑战、重组，也会在危机中被强化。</p>
+          <div class="flow">
+            <div class="flow-item">危机</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item">叙事更新</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item">制度调整</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item">新秩序</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pager reveal">
+      <a href="revolutions.html">← 返回三次革命</a>
+      <a href="future.html">下一页：未来议题 →</a>
+    </div>
+
+    <div class="footer">想象秩序是“协作操作系统”。</div>
+  </main>
+
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+</body>
+</html>
