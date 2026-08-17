@@ -59,6 +59,21 @@ const BOOKS = {
       { label: '狐狸与本质', href: 'fox.html' },
     ],
   },
+  'thinking-fast-slow': {
+    id: 'thinking-fast-slow',
+    title: '思考，快与慢',
+    subtitle: 'Thinking, Fast and Slow',
+    indexUrl: 'index-thinking-fast-slow.html',
+    pages: [
+      { label: '概览', href: 'index-thinking-fast-slow.html' },
+      { label: '导入中心', href: 'index-thinking-fast-slow.html#import-hub' },
+      { label: '双系统', href: 'system12.html' },
+      { label: '启发式与偏差', href: 'heuristics.html' },
+      { label: '前景理论', href: 'prospect.html' },
+      { label: '记忆自我', href: 'memory.html' },
+      { label: '决策与生活', href: 'decisions.html' },
+    ],
+  },
 };
 
 /**
@@ -86,6 +101,9 @@ function getCurrentBookId(pathname) {
     } catch (_) {
       /* ignore */
     }
+  }
+  if (path === 'index-thinking-fast-slow.html' || path === 'system12.html' || path === 'heuristics.html' || path === 'prospect.html' || path === 'memory.html' || path === 'decisions.html') {
+    return 'thinking-fast-slow';
   }
   return 'sapiens';
 }
