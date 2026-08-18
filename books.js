@@ -106,6 +106,20 @@ const BOOKS = {
       { label: '政府职责', href: 'government-duty.html' },
     ],
   },
+  'ruined-city': {
+    id: 'ruined-city',
+    title: '废都',
+    subtitle: '贾平凹 · Ruined City',
+    indexUrl: 'index-ruined-city.html',
+    pages: [
+      { label: '概览', href: 'index-ruined-city.html' },
+      { label: '导入中心', href: 'index-ruined-city.html#import-hub' },
+      { label: '西京城景', href: 'xijing.html' },
+      { label: '庄之蝶', href: 'zhuang-zhudie.html' },
+      { label: '文人与欲望', href: 'literati-desire.html' },
+      { label: '废墟隐喻', href: 'ruined-metaphor.html' },
+    ],
+  },
 };
 
 /**
@@ -142,6 +156,9 @@ function getCurrentBookId(pathname) {
   }
   if (path === 'index-wealth.html' || path === 'division.html' || path === 'value-price.html' || path === 'capital-growth.html' || path === 'government-duty.html') {
     return 'wealth';
+  }
+  if (path === 'index-ruined-city.html' || path === 'xijing.html' || path === 'zhuang-zhudie.html' || path === 'literati-desire.html' || path === 'ruined-metaphor.html') {
+    return 'ruined-city';
   }
   return 'sapiens';
 }

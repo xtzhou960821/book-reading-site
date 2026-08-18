@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《废都》文人与欲望</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="ruined-city">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">废都</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="index-ruined-city.html">概览</a>
+          <a class="nav-link" href="index-ruined-city.html#import-hub">导入中心</a>
+          <a class="nav-link" href="xijing.html">西京城景</a>
+          <a class="nav-link" href="zhuang-zhudie.html">庄之蝶</a>
+          <a class="nav-link active" href="literati-desire.html">文人与欲望</a>
+          <a class="nav-link" href="ruined-metaphor.html">废墟隐喻</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">文人与欲望</div>
+      <p>
+        西京文人圈既交换诗文与名声，也交换人情与欲望；私人关系成为推动情节与揭示精神空心的关键机制。
+      </p>
+      <div class="badges">
+        <span class="badge">文人圈层</span>
+        <span class="badge">名利交换</span>
+        <span class="badge">关系网络</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>章节要点</h2>
+        <span class="section-meta">圈子如何把欲望组织成生活方式</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="ruined-desire" data-chart="ruined-desire">
+        <div class="tabs" aria-label="欲望结构指标切换">
+          <button class="tab-button active" data-tab="circle">圈层动力</button>
+          <button class="tab-button" data-tab="relation">关系张力</button>
+          <button class="tab-button" data-tab="cost">沉沦代价</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>圈层动力指数（0–100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div><div class="bar-value" data-bar-value>90</div><div class="bar-vertical"><span data-tip="名声流通 · 90" style="height: 90%; background: var(--accent);"></span></div><div class="bar-caption">名声流通</div></div>
+          <div><div class="bar-value" data-bar-value>86</div><div class="bar-vertical"><span data-tip="人情往来 · 86" style="height: 86%; background: var(--accent-2);"></span></div><div class="bar-caption">人情往来</div></div>
+          <div><div class="bar-value" data-bar-value>78</div><div class="bar-vertical"><span data-tip="利益纠葛 · 78" style="height: 78%; background: var(--accent-3);"></span></div><div class="bar-caption">利益纠葛</div></div>
+          <div><div class="bar-value" data-bar-value>72</div><div class="bar-vertical"><span data-tip="创作期待 · 72" style="height: 72%; background: var(--accent-4);"></span></div><div class="bar-caption">创作期待</div></div>
+        </div>
+        <p class="note" data-chart-note>概念示意：名声与人情是圈层运转的主轴。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card reveal">
+          <h3>文人朋友圈</h3>
+          <p>朋友、编辑、仰慕者与竞争者构成一张不断索取与回馈的网。庄之蝶既被抬举，也被拖入纠纷、请托与舆论。</p>
+        </article>
+        <article class="card reveal">
+          <h3>欲望作为逃避</h3>
+          <p>情感与身体关系在书中不只是情节刺激，更常充当逃避创作失败、婚姻困境与意义缺失的出口——出口越多，自我越碎。</p>
+        </article>
+      </div>
+      <article class="card card--glow reveal">
+        <h3>阅读提示</h3>
+        <p>本站聚焦结构功能：关系如何推动沉沦、圈子如何再生产空虚。涉及私密情节时，建议回到原著语境辨析，而不是孤立猎奇。</p>
+      </article>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>自动跟随概览页选择</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <div class="kw-chips" style="margin-top: 14px" data-content-keywords></div>
+      </div>
+      <p class="note" data-content-empty hidden>尚未关联解析内容：可在概览页「通用书籍导入入口」导入 PDF/网址并选择关联。</p>
+    </section>
+
+    <div class="pager reveal">
+      <a href="zhuang-zhudie.html">← 庄之蝶</a>
+      <a href="ruined-metaphor.html">废墟隐喻 →</a>
+    </div>
+
+    <div class="footer">《废都》章节页 · 文人与欲望</div>
+  </main>
+  <script>
+    window.bookChartData = window.bookChartData || {};
+    window.bookChartData['ruined-desire'] = {
+      circle: {
+        label: '圈层动力指数（0–100）',
+        note: '概念示意：名声与人情是圈层运转的主轴。',
+        values: [90, 86, 78, 72],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+      relation: {
+        label: '关系张力指数（0–100）',
+        note: '概念示意：亲密、依赖与利用常常同时发生。',
+        values: [74, 92, 88, 70],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+      cost: {
+        label: '沉沦代价指数（0–100）',
+        note: '概念示意：即时满足越高，自我统合与责任越弱。',
+        values: [68, 80, 94, 86],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+    };
+  </script>
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>
