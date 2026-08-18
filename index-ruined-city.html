@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="《废都》结构化视觉导览：贾平凹以西京为舞台，书写文人庄之蝶的沉沦、文人圈层与「废都」隐喻。" />
+  <title>《废都》视觉导览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="ruined-city">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">废都</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index-ruined-city.html">概览</a>
+          <a class="nav-link" href="index-ruined-city.html#import-hub">导入中心</a>
+          <a class="nav-link" href="xijing.html">西京城景</a>
+          <a class="nav-link" href="zhuang-zhudie.html">庄之蝶</a>
+          <a class="nav-link" href="literati-desire.html">文人与欲望</a>
+          <a class="nav-link" href="ruined-metaphor.html">废墟隐喻</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">《废都》</div>
+      <p>贾平凹以虚构古都<strong>西京</strong>为舞台，书写文人<strong>庄之蝶</strong>在名声、欲望与时代变迁中的沉沦与迷失。「废都」既是城市景观，也是精神废墟的寓言：旧秩序松动之后，文化人如何自处，又如何在自我放纵中走向崩解。</p>
+      <div class="badges">
+        <span class="badge">当代文学</span>
+        <span class="badge">文人叙事</span>
+        <span class="badge">城市寓言</span>
+        <span class="badge">精神废墟</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>方式 C：输入书名生成新模板</h3>
+        <form class="import-form" data-title-import-form>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="book_title" placeholder="例如：思考，快与慢" required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="book_subtitle" placeholder="不填则使用默认备注" />
+          </label>
+          <button class="primary-btn" type="submit">生成新书模板</button>
+        </form>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以从网址、PDF 或书名创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>从下方选择已解析的 PDF/网页</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-content-picker-empty>还没有可关联的解析内容：先在上方「通用书籍导入入口」导入 PDF 或网址，即可把解析出的真实文本、章节、关键词与统计展示在本页。</p>
+        <div class="kw-chips" data-content-picker></div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
+      </div>
+    </section>
+
+    <section class="section" id="framework">
+      <div class="section-head reveal">
+        <h2>全书阅读坐标</h2>
+        <span class="section-meta">1993 年出版 · 西京叙事 · 从城市景观到精神寓言</span>
+      </div>
+      <div class="grid-3">
+        <article class="stat reveal">
+          <strong data-count="1993">0</strong>
+          <span>首次出版年份</span>
+        </article>
+        <article class="stat reveal">
+          <strong data-count="4" data-suffix="线">0</strong>
+          <span>本站导览的四条主线</span>
+        </article>
+        <article class="stat reveal">
+          <strong data-count="1" data-suffix="城">0</strong>
+          <span>虚构古都「西京」作为舞台</span>
+        </article>
+      </div>
+      <div class="grid-2">
+        <article class="card reveal">
+          <h3>核心问题</h3>
+          <p>当传统文人身份失去稳固支点，名声、情欲与世俗利益如何改写一个人的自我？城市的「废」是建筑与秩序的衰败，还是精神世界的空洞？</p>
+        </article>
+        <article class="card reveal">
+          <h3>阅读提醒</h3>
+          <p>本书以文人圈层与私人关系为叙事主轴，争议亦长期伴随其出版史。本站按结构主题组织导览，侧重城市、人物与隐喻，不替代原著细读。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>全书结构地图</h2>
+        <span class="section-meta">先立城，再立人，再看欲望与寓言</span>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>叙事链条</h3>
+          <p>从城市景观进入人物内心：西京提供舞台，庄之蝶牵出文人网络，欲望关系推动沉沦，废墟意象收束全书寓言。</p>
+          <div class="flow" aria-label="废都阅读链条">
+            <span class="flow-item">西京</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">庄之蝶</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">欲望</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">废墟</span>
+          </div>
+          <div class="matrix">
+            <div class="pill">古都景观 → 精神气候</div>
+            <div class="pill">名声与空心</div>
+            <div class="pill">文人朋友圈 · 私人关系</div>
+            <div class="pill">废都 = 城市 + 心灵</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>作者与原著</h3>
+          <p>贾平凹著《废都》，1993 年出版。英文常译作 <em>Ruined City</em> / <em>Abandoned Capital</em>。本站按四条主线组织导览，帮助建立结构印象，不替代原著细读。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="xijing.html">
+          <h3>01 · 西京城景</h3>
+          <span>理解「废都」如何落在一座虚构古都的街巷、名声与日常气候里。</span>
+        </a>
+        <a class="nav-card reveal" href="zhuang-zhudie.html">
+          <h3>02 · 庄之蝶</h3>
+          <span>跟踪主人公从文化名人到自我迷失的轨迹与内在空心。</span>
+        </a>
+        <a class="nav-card reveal" href="literati-desire.html">
+          <h3>03 · 文人与欲望</h3>
+          <span>观察文人圈层、私人关系与名利交换如何互相缠绕。</span>
+        </a>
+        <a class="nav-card reveal" href="ruined-metaphor.html">
+          <h3>04 · 废墟隐喻</h3>
+          <span>把「废都」读作城市寓言与精神废墟，并回看作品的争议回响。</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">《废都》阅读档案 · 图表数值为结构理解所用的概念指标</div>
+  </main>
+  <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
+  <script src="./library.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>
