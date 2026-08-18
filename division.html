@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《国富论》分工与交换</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="wealth">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">国富论</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="index-wealth.html">概览</a>
+          <a class="nav-link" href="index-wealth.html#import-hub">导入中心</a>
+          <a class="nav-link active" href="division.html">分工与交换</a>
+          <a class="nav-link" href="value-price.html">价值与价格</a>
+          <a class="nav-link" href="capital-growth.html">资本与增长</a>
+          <a class="nav-link" href="government-duty.html">政府职责</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">分工与交换</div>
+      <p>
+        生产力增长的第一台发动机：把复杂生产拆成稳定工序，再通过交换把专业化成果连接成更大的市场。
+      </p>
+      <div class="badges">
+        <span class="badge">制针工场</span>
+        <span class="badge">市场范围</span>
+        <span class="badge">货币媒介</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>章节要点</h2>
+        <span class="section-meta">生产力增长的第一台发动机</span>
+      </div>
+      <div class="grid-2">
+        <article class="card chart-animate reveal">
+          <div class="chart-title"><span>制针工场：分工如何放大产出</span></div>
+          <div class="bar-labels" aria-label="分工带来生产率提升的三个原因">
+            <div>熟练度提高<div class="bar-stack"><span data-tip="工人专注单一操作，熟练度持续提高" style="width: 92%; background: var(--accent);"></span></div></div>
+            <div>转换损耗减少<div class="bar-stack"><span data-tip="减少在不同工序之间切换的时间" style="width: 78%; background: var(--accent-2);"></span></div></div>
+            <div>工具与机械改进<div class="bar-stack"><span data-tip="单一任务更容易被工具优化和机械替代" style="width: 86%; background: var(--accent-3);"></span></div></div>
+          </div>
+          <p class="note">图示表达斯密总结的三种机制，长度表示相对影响而非原著统计值。</p>
+        </article>
+        <article class="card reveal">
+          <h3>分工受市场范围限制</h3>
+          <p>专业化只有在交换对象足够多时才成立。市场越大，分工越细；交通、货币与制度降低交换成本，又会反过来扩大市场。</p>
+          <div class="flow" aria-label="分工与市场的循环关系">
+            <span class="flow-item">市场扩大</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">分工深化</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">产出增加</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">交换增加</span>
+          </div>
+        </article>
+      </div>
+      <div class="grid-3">
+        <article class="card reveal"><h3>专业化</h3><p>把复杂生产拆成稳定工序，让经验、技能与工具围绕单一任务累积。</p></article>
+        <article class="card reveal"><h3>交换倾向</h3><p>个人通过交换满足彼此需要，不必依赖陌生人的善意，而是协调各自利益。</p></article>
+        <article class="card reveal"><h3>货币媒介</h3><p>货币降低物物交换的匹配难度，使生产、交易与价值比较更容易展开。</p></article>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>自动跟随概览页选择</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <div class="kw-chips" style="margin-top: 14px" data-content-keywords></div>
+      </div>
+      <p class="note" data-content-empty hidden>尚未关联解析内容：可在概览页「通用书籍导入入口」导入 PDF/网址并选择关联。</p>
+    </section>
+
+    <div class="pager reveal">
+      <a href="index-wealth.html">← 返回概览</a>
+      <a href="value-price.html">价值与价格 →</a>
+    </div>
+
+    <div class="footer">《国富论》章节页 · 分工与交换</div>
+  </main>
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>
