@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《国富论》资本与增长</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <main class="page" data-book-id="wealth">
+    <header class="topbar reveal">
+      <nav class="nav">
+        <div class="brand-area">
+          <div class="book-switcher" data-book-switcher>
+            <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
+              <span class="book-switcher-current">国富论</span>
+              <span class="book-switcher-arrow">▾</span>
+            </button>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="index-wealth.html">概览</a>
+          <a class="nav-link" href="index-wealth.html#import-hub">导入中心</a>
+          <a class="nav-link" href="division.html">分工与交换</a>
+          <a class="nav-link" href="value-price.html">价值与价格</a>
+          <a class="nav-link active" href="capital-growth.html">资本与增长</a>
+          <a class="nav-link" href="government-duty.html">政府职责</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="glass-title">资本与增长</div>
+      <p>
+        今天的储蓄与积累，如何转化为明天的生产能力：固定资本提高单位产出，流动资本维持周转与再生产。
+      </p>
+      <div class="badges">
+        <span class="badge">固定资本</span>
+        <span class="badge">流动资本</span>
+        <span class="badge">储蓄与投资</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>章节要点</h2>
+        <span class="section-meta">今天的积累，如何转化为明天的生产能力</span>
+      </div>
+      <div class="card chart-animate reveal" data-tab-group="wealth-impact" data-chart="wealth-impact">
+        <div class="tabs" aria-label="增长机制指标切换">
+          <button class="tab-button active" data-tab="productivity">生产力</button>
+          <button class="tab-button" data-tab="coordination">协调效率</button>
+          <button class="tab-button" data-tab="public">公共收益</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>生产力推动指数（0–100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div><div class="bar-value" data-bar-value>96</div><div class="bar-vertical"><span data-tip="劳动分工 · 96" style="height: 96%; background: var(--accent);"></span></div><div class="bar-caption">劳动分工</div></div>
+          <div><div class="bar-value" data-bar-value>82</div><div class="bar-vertical"><span data-tip="市场交换 · 82" style="height: 82%; background: var(--accent-2);"></span></div><div class="bar-caption">市场交换</div></div>
+          <div><div class="bar-value" data-bar-value>88</div><div class="bar-vertical"><span data-tip="资本积累 · 88" style="height: 88%; background: var(--accent-3);"></span></div><div class="bar-caption">资本积累</div></div>
+          <div><div class="bar-value" data-bar-value>76</div><div class="bar-vertical"><span data-tip="公共制度 · 76" style="height: 76%; background: var(--accent-4);"></span></div><div class="bar-caption">公共制度</div></div>
+        </div>
+        <p class="note" data-chart-note>概念示意：分工与资本积累直接扩大生产能力。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card reveal">
+          <h3>固定资本</h3>
+          <p>机器、厂房、工具和改良土地等资产在多轮生产中持续发挥作用，提高单位劳动的产出。</p>
+        </article>
+        <article class="card reveal">
+          <h3>流动资本</h3>
+          <p>货币、原料、存货以及用于维持劳动者的资金，在销售与再投入之间不断周转。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>自动跟随概览页选择</span>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <div class="kw-chips" style="margin-top: 14px" data-content-keywords></div>
+      </div>
+      <p class="note" data-content-empty hidden>尚未关联解析内容：可在概览页「通用书籍导入入口」导入 PDF/网址并选择关联。</p>
+    </section>
+
+    <div class="pager reveal">
+      <a href="value-price.html">← 价值与价格</a>
+      <a href="government-duty.html">政府职责 →</a>
+    </div>
+
+    <div class="footer">《国富论》章节页 · 资本与增长</div>
+  </main>
+  <script>
+    window.bookChartData = window.bookChartData || {};
+    window.bookChartData['wealth-impact'] = {
+      productivity: {
+        label: '生产力推动指数（0–100）',
+        note: '概念示意：分工与资本积累直接扩大生产能力。',
+        values: [96, 82, 88, 76],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+      coordination: {
+        label: '市场协调指数（0–100）',
+        note: '概念示意：价格与交换连接分散的生产决策。',
+        values: [74, 94, 72, 81],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+      public: {
+        label: '公共收益指数（0–100）',
+        note: '概念示意：公共制度为市场活动提供长期基础。',
+        values: [68, 78, 70, 96],
+        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
+      },
+    };
+  </script>
+  <script src="./books.js"></script>
+  <script src="./app.js"></script>
+  <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
+</body>
+</html>

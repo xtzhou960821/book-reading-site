@@ -33,19 +33,7 @@ const BOOKS = {
       { label: '争议与解读', href: 'controversy-100years.html' },
     ],
   },
-  wealth: {
-    id: 'wealth',
-    title: '国富论',
-    subtitle: 'The Wealth of Nations',
-    indexUrl: 'index-wealth.html',
-    pages: [
-      { label: '概览', href: 'index-wealth.html' },
-      { label: '分工与交换', href: 'index-wealth.html#division' },
-      { label: '价值与价格', href: 'index-wealth.html#value' },
-      { label: '资本与增长', href: 'index-wealth.html#capital' },
-      { label: '政府职责', href: 'index-wealth.html#government' },
-    ],
-  },
+
   'little-prince': {
     id: 'little-prince',
     title: '小王子',
@@ -104,6 +92,20 @@ const BOOKS = {
       { label: '爱情与婚姻', href: 'love.html' },
     ],
   },
+  'wealth': {
+    id: 'wealth',
+    title: '国富论',
+    subtitle: '亚当·斯密 · The Wealth of Nations',
+    indexUrl: 'index-wealth.html',
+    pages: [
+      { label: '概览', href: 'index-wealth.html' },
+      { label: '导入中心', href: 'index-wealth.html#import-hub' },
+      { label: '分工与交换', href: 'division.html' },
+      { label: '价值与价格', href: 'value-price.html' },
+      { label: '资本与增长', href: 'capital-growth.html' },
+      { label: '政府职责', href: 'government-duty.html' },
+    ],
+  },
 };
 
 /**
@@ -113,9 +115,6 @@ const BOOKS = {
  */
 function getCurrentBookId(pathname) {
   const path = pathname.split('/').pop() || '';
-  if (path.startsWith('index-wealth')) {
-    return 'wealth';
-  }
   if (path.startsWith('index-100years') || path === 'family.html' || path === 'magic-realism.html' ||
       path === 'cycles.html' || path === 'solitude.html' || path === 'controversy-100years.html') {
     return '100years';
@@ -140,6 +139,9 @@ function getCurrentBookId(pathname) {
   }
   if (path === 'index-ordinary-world.html' || path === 'characters.html' || path === 'brothers.html' || path === 'era.html' || path === 'struggle.html' || path === 'love.html') {
     return 'ordinary-world';
+  }
+  if (path === 'index-wealth.html' || path === 'division.html' || path === 'value-price.html' || path === 'capital-growth.html' || path === 'government-duty.html') {
+    return 'wealth';
   }
   return 'sapiens';
 }

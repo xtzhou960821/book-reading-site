@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="《国富论》结构化视觉导览：分工、交换、价值、价格、资本积累与政府职责。" />
+  <meta name="description" content="《国富论》结构化视觉导览：亚当·斯密论分工、交换、价值、资本积累与政府职责。" />
   <title>《国富论》视觉导览</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -12,44 +12,174 @@
   <div class="orb two"></div>
   <div class="orb three"></div>
 
-  <main class="page">
+  <main class="page" data-book-id="wealth">
     <header class="topbar reveal">
-      <nav class="nav" aria-label="《国富论》章节导航">
-        <div class="brand-area">
+      <nav class="nav">
+<div class="brand-area">
           <div class="book-switcher" data-book-switcher>
             <button class="book-switcher-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="切换书籍">
               <span class="book-switcher-current">国富论</span>
               <span class="book-switcher-arrow">▾</span>
             </button>
-            <ul class="book-switcher-list" role="listbox" hidden>
-              <li role="option" data-book="sapiens" aria-selected="false"><a href="index.html">人类简史 · Sapiens</a></li>
-              <li role="option" data-book="100years" aria-selected="false"><a href="index-100years.html">百年孤独 · Cien años de soledad</a></li>
-              <li role="option" data-book="wealth" aria-selected="true"><a href="index-wealth.html">国富论 · The Wealth of Nations</a></li>
-            </ul>
+            <ul class="book-switcher-list" role="listbox" hidden></ul>
           </div>
         </div>
         <div class="nav-links">
           <a class="nav-link active" href="index-wealth.html">概览</a>
-          <a class="nav-link" href="#division">分工与交换</a>
-          <a class="nav-link" href="#value">价值与价格</a>
-          <a class="nav-link" href="#capital">资本与增长</a>
-          <a class="nav-link" href="#government">政府职责</a>
+          <a class="nav-link" href="index-wealth.html#import-hub">导入中心</a>
+          <a class="nav-link" href="division.html">分工与交换</a>
+          <a class="nav-link" href="value-price.html">价值与价格</a>
+          <a class="nav-link" href="capital-growth.html">资本与增长</a>
+          <a class="nav-link" href="government-duty.html">政府职责</a>
         </div>
       </nav>
     </header>
 
-    <section class="hero reveal" id="overview">
+    <section class="hero reveal">
       <div class="glass-title">《国富论》</div>
-      <p>
-        亚当·斯密从<strong>劳动分工</strong>出发，解释交换如何扩大市场、价格如何协调供需，
-        以及<strong>资本积累</strong>如何推动生产力增长。它不仅讨论自由市场，也系统分析了
-        <strong>公共工程、司法、国防与教育</strong>等政府职责。
-      </p>
+      <p>亚当·斯密从<strong>劳动分工</strong>出发，解释交换如何扩大市场、价格如何协调供需，以及<strong>资本积累</strong>如何推动生产力增长。它不仅讨论自由市场，也系统分析了<strong>公共工程、司法、国防与教育</strong>等政府职责。</p>
       <div class="badges">
         <span class="badge">政治经济学</span>
         <span class="badge">劳动分工</span>
         <span class="badge">价格机制</span>
         <span class="badge">资本积累</span>
+      </div>
+    </section>
+
+    <section class="section" id="import-hub">
+      <div class="section-head reveal">
+        <h2>通用书籍导入入口</h2>
+        <span class="section-meta">输入网址或上传 PDF，自动套用当前模板</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-import-feedback data-tone="info">导入后会生成一条书籍入口，可打开对应模板页继续阅读整理。</p>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>方式 A：指定书籍网址</h3>
+          <form class="import-form" data-url-import-form>
+            <label class="field">
+              <span>书籍网址</span>
+              <input class="control" type="url" name="book_url" placeholder="https://example.com/book" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_url_title" placeholder="不填则自动推断" />
+            </label>
+            <button class="primary-btn" type="submit">从网址创建模板</button>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>方式 B：上传 PDF 文件</h3>
+          <form class="import-form" data-pdf-import-form>
+            <label class="field">
+              <span>选择 PDF</span>
+              <input class="control" type="file" name="book_pdf" accept=".pdf,application/pdf" required />
+            </label>
+            <label class="field">
+              <span>书名（可选）</span>
+              <input class="control" type="text" name="book_pdf_title" placeholder="不填则使用文件名" />
+            </label>
+            <button class="primary-btn" type="submit">从 PDF 创建模板</button>
+          </form>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>方式 C：输入书名生成新模板</h3>
+        <form class="import-form" data-title-import-form>
+          <label class="field">
+            <span>新书名</span>
+            <input class="control" type="text" name="book_title" placeholder="例如：思考，快与慢" required />
+          </label>
+          <label class="field">
+            <span>副标题 / 备注（可选）</span>
+            <input class="control" type="text" name="book_subtitle" placeholder="不填则使用默认备注" />
+          </label>
+          <button class="primary-btn" type="submit">生成新书模板</button>
+        </form>
+      </div>
+      <div class="card reveal">
+        <div class="section-head">
+          <h3>已导入书籍库</h3>
+          <span class="section-meta" data-library-count>0 本</span>
+        </div>
+        <div class="library-list" data-library-list></div>
+        <p class="note" data-library-empty>还没有导入书籍。你可以从网址、PDF 或书名创建一本。</p>
+      </div>
+    </section>
+
+    <section class="section" data-content-block>
+      <div class="section-head reveal">
+        <h2>关联解析内容</h2>
+        <span class="section-meta" data-content-meta>从下方选择已解析的 PDF/网页</span>
+      </div>
+      <div class="card reveal">
+        <p class="note" data-content-picker-empty>还没有可关联的解析内容：先在上方「通用书籍导入入口」导入 PDF 或网址，即可把解析出的真实文本、章节、关键词与统计展示在本页。</p>
+        <div class="kw-chips" data-content-picker></div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <p class="quote" data-content-excerpt></p>
+        <p class="note" data-content-note hidden></p>
+        <div class="grid-3" style="margin-top: 18px">
+          <div class="stat">
+            <strong data-auto-stat="words" data-suffix="字">--</strong>
+            <span>解析字数</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="pages" data-suffix="页">--</strong>
+            <span>页数 / 章节</span>
+          </div>
+          <div class="stat">
+            <strong data-auto-stat="minutes" data-suffix="分钟">--</strong>
+            <span>预计阅读</span>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>章节结构</h3>
+          <span class="section-meta" data-content-headings-count></span>
+        </div>
+        <ol class="heading-list" data-content-headings></ol>
+        <p class="note" data-content-headings-empty hidden>未检测到清晰的章节标题。</p>
+      </div>
+      <div class="card reveal" data-content-scope hidden>
+        <div class="section-head">
+          <h3>高频关键词</h3>
+          <span class="section-meta">来自全文词频统计</span>
+        </div>
+        <div class="kw-chips" data-content-keywords></div>
+      </div>
+      <div class="card chart-animate reveal" data-content-chart hidden>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="population">结构词汇</button>
+          <button class="tab-button" data-tab="wellbeing">句法节奏</button>
+          <button class="tab-button" data-tab="ecology">文本特征</button>
+        </div>
+        <div class="chart-title"><span data-chart-label>结构与词汇指数（0-100）</span></div>
+        <div class="bar-grid" data-chart-bars>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #7ad3ff;"></span></div>
+            <div class="bar-caption">章节密度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #b4ffb2;"></span></div>
+            <div class="bar-caption">词汇丰富度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ffd087;"></span></div>
+            <div class="bar-caption">概念集中度</div>
+          </div>
+          <div>
+            <div class="bar-value" data-bar-value>--</div>
+            <div class="bar-vertical"><span style="height: 4%; background: #ff8ec7;"></span></div>
+            <div class="bar-caption">语义跨度</div>
+          </div>
+        </div>
+        <p class="note" data-chart-note>选择关联内容后显示真实统计。</p>
       </div>
     </section>
 
@@ -84,162 +214,68 @@
       </div>
     </section>
 
-    <section class="section" id="division">
+    <section class="section">
       <div class="section-head reveal">
-        <h2>分工与交换</h2>
-        <span class="section-meta">生产力增长的第一台发动机</span>
-      </div>
-      <div class="grid-2">
-        <article class="card chart-animate reveal">
-          <div class="chart-title"><span>制针工场：分工如何放大产出</span></div>
-          <div class="bar-labels" aria-label="分工带来生产率提升的三个原因">
-            <div>熟练度提高<div class="bar-stack"><span data-tip="工人专注单一操作，熟练度持续提高" style="width: 92%; background: var(--accent);"></span></div></div>
-            <div>转换损耗减少<div class="bar-stack"><span data-tip="减少在不同工序之间切换的时间" style="width: 78%; background: var(--accent-2);"></span></div></div>
-            <div>工具与机械改进<div class="bar-stack"><span data-tip="单一任务更容易被工具优化和机械替代" style="width: 86%; background: var(--accent-3);"></span></div></div>
-          </div>
-          <p class="note">图示表达斯密总结的三种机制，长度表示相对影响而非原著统计值。</p>
-        </article>
-        <article class="card reveal">
-          <h3>分工受市场范围限制</h3>
-          <p>专业化只有在交换对象足够多时才成立。市场越大，分工越细；交通、货币与制度降低交换成本，又会反过来扩大市场。</p>
-          <div class="flow" aria-label="分工与市场的循环关系">
-            <span class="flow-item">市场扩大</span><span class="flow-arrow" aria-hidden="true"></span>
-            <span class="flow-item">分工深化</span><span class="flow-arrow" aria-hidden="true"></span>
-            <span class="flow-item">产出增加</span><span class="flow-arrow" aria-hidden="true"></span>
-            <span class="flow-item">交换增加</span>
-          </div>
-        </article>
-      </div>
-      <div class="grid-3">
-        <article class="card reveal"><h3>专业化</h3><p>把复杂生产拆成稳定工序，让经验、技能与工具围绕单一任务累积。</p></article>
-        <article class="card reveal"><h3>交换倾向</h3><p>个人通过交换满足彼此需要，不必依赖陌生人的善意，而是协调各自利益。</p></article>
-        <article class="card reveal"><h3>货币媒介</h3><p>货币降低物物交换的匹配难度，使生产、交易与价值比较更容易展开。</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="value">
-      <div class="section-head reveal">
-        <h2>价值与价格</h2>
-        <span class="section-meta">自然价格提供重心，市场价格围绕它波动</span>
-      </div>
-      <div class="card reveal">
-        <table class="table">
-          <thead>
-            <tr><th scope="col">概念</th><th scope="col">回答的问题</th><th scope="col">主要构成或影响</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">使用价值</th><td>一件物品有什么用途？</td><td>满足实际需要的能力</td></tr>
-            <tr><th scope="row">交换价值</th><td>它能换取多少别的商品？</td><td>稀缺、劳动与市场条件</td></tr>
-            <tr><th scope="row">自然价格</th><td>长期覆盖生产成本的价格是多少？</td><td>工资、利润与地租</td></tr>
-            <tr><th scope="row">市场价格</th><td>眼下实际成交价格是多少？</td><td>有效需求与市场供给</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="grid-3">
-        <article class="card reveal"><h3>工资</h3><p>劳动者提供劳动获得的收入，受到劳动需求、生活成本与议价条件影响。</p></article>
-        <article class="card reveal"><h3>利润</h3><p>资本所有者预付工资与材料、承担风险后要求的回报。</p></article>
-        <article class="card reveal"><h3>地租</h3><p>土地所有者凭借土地占有而取得的收入，也进入许多商品的自然价格。</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="capital">
-      <div class="section-head reveal">
-        <h2>资本、储蓄与增长</h2>
-        <span class="section-meta">今天的积累，如何转化为明天的生产能力</span>
-      </div>
-      <div class="card chart-animate reveal" data-tab-group="wealth-impact" data-chart="wealth-impact">
-        <div class="tabs" aria-label="增长机制指标切换">
-          <button class="tab-button active" data-tab="productivity">生产力</button>
-          <button class="tab-button" data-tab="coordination">协调效率</button>
-          <button class="tab-button" data-tab="public">公共收益</button>
-        </div>
-        <div class="chart-title"><span data-chart-label>生产力推动指数（0–100）</span></div>
-        <div class="bar-grid" data-chart-bars>
-          <div><div class="bar-value" data-bar-value>96</div><div class="bar-vertical"><span data-tip="劳动分工 · 96" style="height: 96%; background: var(--accent);"></span></div><div class="bar-caption">劳动分工</div></div>
-          <div><div class="bar-value" data-bar-value>82</div><div class="bar-vertical"><span data-tip="市场交换 · 82" style="height: 82%; background: var(--accent-2);"></span></div><div class="bar-caption">市场交换</div></div>
-          <div><div class="bar-value" data-bar-value>88</div><div class="bar-vertical"><span data-tip="资本积累 · 88" style="height: 88%; background: var(--accent-3);"></span></div><div class="bar-caption">资本积累</div></div>
-          <div><div class="bar-value" data-bar-value>76</div><div class="bar-vertical"><span data-tip="公共制度 · 76" style="height: 76%; background: var(--accent-4);"></span></div><div class="bar-caption">公共制度</div></div>
-        </div>
-        <p class="note" data-chart-note>概念示意：分工与资本积累直接扩大生产能力。</p>
-      </div>
-      <div class="grid-2">
-        <article class="card reveal">
-          <h3>固定资本</h3>
-          <p>机器、厂房、工具和改良土地等资产在多轮生产中持续发挥作用，提高单位劳动的产出。</p>
-        </article>
-        <article class="card reveal">
-          <h3>流动资本</h3>
-          <p>货币、原料、存货以及用于维持劳动者的资金，在销售与再投入之间不断周转。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="government">
-      <div class="section-head reveal">
-        <h2>政府的三项职责</h2>
-        <span class="section-meta">自由市场并不意味着公共制度缺席</span>
-      </div>
-      <div class="grid-3">
-        <article class="card reveal">
-          <h3>国防</h3>
-          <p>保护社会免受外部暴力与侵略，为正常生产和交换提供最基本的安全条件。</p>
-        </article>
-        <article class="card reveal">
-          <h3>司法</h3>
-          <p>保护社会成员免受侵害与压迫，维持产权、契约和公正裁判。</p>
-        </article>
-        <article class="card reveal">
-          <h3>公共工程与公共机构</h3>
-          <p>建设社会收益巨大、却难以由私人利润单独支持的道路、桥梁、教育及其他公共设施。</p>
-        </article>
-      </div>
-      <article class="card card--glow reveal">
-        <h3>斯密对垄断的警惕</h3>
-        <p>同业者的利益并不天然等于公共利益。限制竞争、操纵法规和维持特权会抬高价格、压低效率，因此竞争秩序本身需要制度维护。</p>
-      </article>
-    </section>
-
-    <section class="section" id="reading-path">
-      <div class="section-head reveal">
-        <h2>建议阅读路径</h2>
+        <h2>全书结构地图</h2>
         <span class="section-meta">先理解机制，再进入政策争论</span>
       </div>
-      <div class="nav-cards">
-        <a class="nav-card reveal" href="#division"><h3>01 · 从分工开始</h3><span>理解生产力为何增长，以及市场范围如何决定分工程度。</span></a>
-        <a class="nav-card reveal" href="#value"><h3>02 · 拆解价格</h3><span>区分使用价值、交换价值、自然价格与市场价格。</span></a>
-        <a class="nav-card reveal" href="#capital"><h3>03 · 跟踪资本</h3><span>观察储蓄如何转为固定资本、流动资本与持续再生产。</span></a>
-        <a class="nav-card reveal" href="#government"><h3>04 · 回到制度</h3><span>理解国防、司法、公共工程与竞争秩序的必要性。</span></a>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>论证链条</h3>
+          <p>从个人交换扩展到国家财富：分工放大产出，价格协调供需，资本积累推动增长，公共制度托底市场。</p>
+          <div class="flow" aria-label="国富论论证链条">
+            <span class="flow-item">分工</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">交换</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">资本</span><span class="flow-arrow" aria-hidden="true"></span>
+            <span class="flow-item">制度</span>
+          </div>
+          <div class="matrix">
+            <div class="pill">制针工场 → 市场范围</div>
+            <div class="pill">自然价格 → 市场价格</div>
+            <div class="pill">固定资本 ↔ 流动资本</div>
+            <div class="pill">国防 · 司法 · 公共工程</div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>作者与原著</h3>
+          <p>亚当·斯密（Adam Smith）著《国民财富的性质和原因的研究》（An Inquiry into the Nature and Causes of the Wealth of Nations），1776 年首版。本站按四条主线组织导览，不替代原著细读。</p>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">《国富论》阅读档案 · 图表数值为结构理解所用的概念指标</footer>
-  </main>
+    <section class="section">
+      <div class="section-head reveal">
+        <h2>深入阅读导航</h2>
+        <span class="section-meta">进入多页结构</span>
+      </div>
+      <div class="nav-cards">
+        <a class="nav-card reveal" href="division.html">
+          <h3>01 · 分工与交换</h3>
+          <span>理解生产力为何增长，以及市场范围如何决定分工程度。</span>
+        </a>
+        <a class="nav-card reveal" href="value-price.html">
+          <h3>02 · 价值与价格</h3>
+          <span>区分使用价值、交换价值、自然价格与市场价格。</span>
+        </a>
+        <a class="nav-card reveal" href="capital-growth.html">
+          <h3>03 · 资本与增长</h3>
+          <span>观察储蓄如何转为固定资本、流动资本与持续再生产。</span>
+        </a>
+        <a class="nav-card reveal" href="government-duty.html">
+          <h3>04 · 政府职责</h3>
+          <span>理解国防、司法、公共工程与竞争秩序的必要性。</span>
+        </a>
+      </div>
+    </section>
 
-  <script>
-    window.bookChartData = window.bookChartData || {};
-    window.bookChartData['wealth-impact'] = {
-      productivity: {
-        label: '生产力推动指数（0–100）',
-        note: '概念示意：分工与资本积累直接扩大生产能力。',
-        values: [96, 82, 88, 76],
-        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
-      },
-      coordination: {
-        label: '市场协调指数（0–100）',
-        note: '概念示意：价格与交换连接分散的生产决策。',
-        values: [74, 94, 72, 81],
-        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
-      },
-      public: {
-        label: '公共收益指数（0–100）',
-        note: '概念示意：公共制度为市场活动提供长期基础。',
-        values: [68, 78, 70, 96],
-        colors: ['#3ecf9d', '#8fe8c4', '#2aa07c', '#6f84a8'],
-      },
-    };
-  </script>
+    <div class="footer">《国富论》阅读档案 · 图表数值为结构理解所用的概念指标</div>
+  </main>
   <script src="./books.js"></script>
+  <script src="./vendor/pdf.min.js"></script>
+  <script src="./content-extract.js"></script>
+  <script src="./library.js"></script>
   <script src="./app.js"></script>
   <script src="./book-switcher.js"></script>
+  <script src="./book-content-renderer.js"></script>
 </body>
 </html>
